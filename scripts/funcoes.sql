@@ -34,7 +34,7 @@ BEGIN
 RETURN VR_MAIS_BARATO;
 
 END FC_VOO_MAIS_BARATO;
-
+/
 
 -- 5. 
 -- Função que devolva o sala�?rio total de um piloto num dado mês.
