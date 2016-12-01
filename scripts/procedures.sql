@@ -188,3 +188,100 @@ BEGIN
   CLOSE C_TRIP_CAB;
 END;
 /
+
+
+-- 9. 
+-- Procedimento que para um determinado período (datainicio/data fim), crie as
+-- viagens dos voos que se devem realizar durante esse período. Considera-se que
+-- já foram criados os voos regulares a efetuar nesse período.
+
+CREATE OR REPLACE PROCEDURE PC_CRIAR_VIAGENS
+  (DATA_INICIO_PERIODO IN DATE, DATA_FIM_PERIODO IN DATE)
+IS
+  PLANO_EM_QUESTAO PLANO%ROWTYPE;
+  DATA_CONTADOR DATE;
+  DATA_PARTIDA_PARA_INSERIR DATE;
+  DATA_CHEGADA_PARA_INSERIR DATE;
+  MINUTOS_DO_VOO NUMBER;
+  ID_PARA_INSERIR NUMBER;
+  PERIODO_INVALIDO EXCEPTION;
+BEGIN
+
+  -- Obter o ID máximo da tabela viagem planeada
+  SELECT MAX(VIAGEM_PLANEADA_ID) INTO ID_PARA_INSERIR FROM VIAGEM_PLANEADA;
+
+  -- Verificar se plano é válido (caso não seja lança a exceção)
+  IF DATA_INICIO_PERIODO >= DATA_FIM_PERIODO THEN
+    RAISE PERIODO_INVALIDO;
+  END IF;
+
+  -- Obter plano em questão
+  SELECT * INTO PLANO_EM_QUESTAO FROM PLANO P
+  WHERE TRUNC(P.DATA_INICIO) = TRUNC(DATA_INICIO_PERIODO)
+  AND TRUNC(P.DATA_FIM) = TRUNC(DATA_FIM_PERIODO);
+  
+  -- Percorrer todos os voos regulares do plano em questao
+  FOR VOO_REGULAR_RECORD IN
+  (SELECT * FROM VOO_REGULAR VR WHERE VR.PLANO_ID = PLANO_EM_QUESTAO.PLANO_ID )
+  LOOP
+  
+    -- Para cada voo regular percorrer as datas todas do plano para criar os voos necessários
+    DATA_CONTADOR := DATA_INICIO_PERIODO;
+    WHILE DATA_CONTADOR < DATA_FIM_PERIODO LOOP
+      
+      -- Verificar se a data do contador corresponde ao dia da semana do voo regular em questão
+      IF TO_CHAR(DATA_CONTADOR, 'D') = TO_CHAR(VOO_REGULAR_RECORD.DIA_DA_SEMANA) THEN
+        
+        -- Incrementar id a inserir
+        ID_PARA_INSERIR := ID_PARA_INSERIR + 1;
+        
+        -- Definir data planeada partida
+        DATA_PARTIDA_PARA_INSERIR := TRUNC(DATA_CONTADOR) 
+        + SUBSTR(VOO_REGULAR_RECORD.HORARIO_PARTIDA, 1, 2) / 24 
+        + SUBSTR(VOO_REGULAR_RECORD.HORARIO_PARTIDA, 4, 5) / (24 * 60);
+        
+        -- Obter duracao do voo em minutos
+        SELECT DURACAO_MINUTOS INTO MINUTOS_DO_VOO FROM VOO V
+        WHERE V.VOO_ID = VOO_REGULAR_RECORD.VOO_ID;
+        
+        -- Definir data planeada de chegada
+        DATA_CHEGADA_PARA_INSERIR := DATA_PARTIDA_PARA_INSERIR + MINUTOS_DO_VOO / (24 * 60);
+        
+        -- Inseir o registo
+        INSERT INTO VIAGEM_PLANEADA
+        (VIAGEM_PLANEADA_ID, VOO_REGULAR,
+        DATA_PLANEADA_PARTIDA, DATA_PLANEADA_CHEGADA)
+        VALUES
+        (ID_PARA_INSERIR, VOO_REGULAR_RECORD.VOO_REGULAR_ID,
+        DATA_PARTIDA_PARA_INSERIR, DATA_CHEGADA_PARA_INSERIR);
+      END IF;
+      
+      -- incrementar o contador da data a 1 dia
+      DATA_CONTADOR := DATA_CONTADOR + 1;
+    END LOOP;
+  END LOOP;
+  
+EXCEPTION
+  WHEN PERIODO_INVALIDO THEN
+    DBMS_OUTPUT.PUT_LINE('Periodo invalido. A data inicio tem de ser menor que a data final. '||SYSDATE);
+  WHEN NO_DATA_FOUND THEN
+    DBMS_OUTPUT.PUT_LINE(' Registo inexistente '||SYSDATE);
+  WHEN TOO_MANY_ROWS THEN
+    DBMS_OUTPUT.PUT_LINE(' Muitos registos '||SYSDATE);
+  WHEN OTHERS THEN
+    DBMS_OUTPUT.PUT_LINE(' Ocorreu um erro '||SYSDATE);
+END;
+/
+
+-- ### TESTAR PROCEDURE 9 ###
+DECLARE
+  DATA_INICIO_PERIODO DATE;
+  DATA_FINAL_PERIODO DATE;
+BEGIN
+  DATA_INICIO_PERIODO := TO_DATE('2016/12/01', 'YYYY/MM/DD');
+  DATA_FINAL_PERIODO := TO_DATE('2016/12/31', 'YYYY/MM/DD');
+  
+  PC_CRIAR_VIAGENS(DATA_INICIO_PERIODO, DATA_FINAL_PERIODO);
+END;
+/
+-- ### FIM TESTE PROCEDURE 9 ###
