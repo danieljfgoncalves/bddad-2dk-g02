@@ -1,8 +1,60 @@
+-- 7.
+-- Procedimento que permita obter as viagens que ainda n„o foram realizadas e
+-- que ainda tÍm lugares por reservar, indicando o cÛdigo do voo, a data, a hora, o
+-- aeroporto origem, o aeroporto destino e o n˙mero de lugares disponÌveis na
+-- classe econÛmica e na executiva.
+CREATE OR REPLACE PROCEDURE PC_VIAGENS_DISPONIVEIS IS
+  L_VOO VOO%ROWTYPE;
+  L_MARCA_MODELO NUMBER;
+  L_LUGARES_ECONOMICOS NUMBER;
+  L_LUGARES_EXECUTIVOS NUMBER;
+  CURSOR VIAGENS_NAO_REALIZADAS
+      IS (SELECT VP.* FROM VIAGEM_PLANEADA VP
+          WHERE VP.VIAGEM_PLANEADA_ID NOT IN (SELECT VIAGEM_REALIZADA_ID FROM VIAGEM_REALIZADA)
+          AND VP.DATA_PLANEADA_PARTIDA - SYSDATE > 0);
+BEGIN
+  -- Cabecalho da tabela
+  dbms_output.put_line('CODIGO_VOO | DATA_HORA_PARTIDA | AEROPORTO_ORIGEM | AEROPORTO_DESTINO | LUGARES_ECONOMICOS_DISPONIVEIS | LUGARES_EXECUTIVOS_DISPONIVEIS');
+
+  FOR VNR IN VIAGENS_NAO_REALIZADAS
+  LOOP
+    -- Obter o voo da viagem_planeada em quest„o
+    SELECT V.* INTO L_VOO FROM VOO V, VOO_REGULAR VR
+    WHERE V.VOO_ID = VR.VOO_ID AND VR.VOO_REGULAR_ID = VNR.VOO_REGULAR;
+    
+    -- Obter marca modelo
+    SELECT A.MARCA_MODELO INTO L_MARCA_MODELO
+    FROM AVIAO A, VOO_REGULAR VR, VIAGEM_PLANEADA VP
+    WHERE VP.VOO_REGULAR = VR.VOO_REGULAR_ID AND VR.AVIAO = A.NUM_SERIE
+    AND VP.VIAGEM_PLANEADA_ID = VNR.VIAGEM_PLANEADA_ID;
+    
+    -- Obter numero de lugares disponiveis na classe economica
+    SELECT COUNT(*) INTO L_LUGARES_ECONOMICOS FROM LUGAR
+    WHERE MARCA_MODELO = L_MARCA_MODELO
+    AND CLASSE = (SELECT C.CLASSE_ID FROM CLASSE C WHERE C.NOME = 'ECONOMICA');
+    
+    -- Obter numero de lugares disponiveis na classe executiva
+    SELECT COUNT(*) INTO L_LUGARES_EXECUTIVOS FROM LUGAR
+    WHERE MARCA_MODELO = L_MARCA_MODELO
+    AND CLASSE = (SELECT C.CLASSE_ID FROM CLASSE C WHERE C.NOME = 'EXECUTIVA');
+    
+    -- imprimir a data
+    dbms_output.put_line(L_VOO.VOO_ID || ' | '
+    || TO_CHAR(VNR.DATA_PLANEADA_PARTIDA, 'YYYY/MM/DD HH:MI') || ' | '
+    || L_VOO.AEROPORTO_ORIGEM || ' | '
+    || L_VOO.AEROPORTO_DESTINO || ' | '
+    || L_LUGARES_ECONOMICOS || ' | '
+    || L_LUGARES_EXECUTIVOS || ' | ');
+  END LOOP;
+END;
+/
+
+
 -- Procedures
 -- 8. 
--- Procedimento que atribua um aviaÃÉo e a tripulacÃßaÃÉo a cada voo regular para um periÃÅodo. 
+-- Procedimento que atribua um aviaÃÉo e a tripulacÃßaÃÉo a cada voo regular para um periÃ?odo. 
 -- Considere que a tripulacÃßaÃÉo e o aviaÃÉo saÃÉo sempre os mesmos para todas as viagens que 
--- se realizam nesse periÃÅodo correspondentes ao mesmo voo_regular.
+-- se realizam nesse periÃ?odo correspondentes ao mesmo voo_regular.
 
 -- PARAMS: PLANO
 CREATE OR REPLACE PROCEDURE ATRIBUIR_AVIAO_TRIPULACAO(PLANO_PARAM IN INTEGER)
@@ -103,7 +155,7 @@ BEGIN
       THEN
         EXIT;
       END IF;
-      -- ATRIBUIR RESTANTES COMISS√ÅRIOS
+      -- ATRIBUIR RESTANTES COMISS√?RIOS
       FOR i IN 1..(TMP_NUM_COMISSARIOS - 1)
       LOOP
         FETCH C_TRIP_CAB INTO TMP_COMISSARIO_ID;
@@ -112,7 +164,7 @@ BEGIN
           CLOSE C_TRIP_CAB;
           OPEN C_TRIP_CAB;
         END IF;
-        LOOP -- SE O COMISSARIO J√Å FIZER PARTE DESTE VOO, TENTAR O SEGUINTE
+        LOOP -- SE O COMISSARIO J√? FIZER PARTE DESTE VOO, TENTAR O SEGUINTE
           SELECT COUNT(*)
           INTO CAB_EXISTENTE
           FROM TRIPULANTE_CABINE TC
