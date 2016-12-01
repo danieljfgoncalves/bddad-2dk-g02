@@ -1,9 +1,63 @@
--- 11.
--- Trigger que impeça que um tripulante possa ser alocado a um voo se o número
--- de voos com inicio no mesmo dia for superior a 2 ou, no caso da 2ª viagem do
--- dia, o aeroporto de partida for diferente do da chegada da 1ª viagem.
+-- 10.
+-- Trigger que impecÌ§a que um piloto possa ser alocado a um voo se naÌƒo tiver as certificacÌ§oÌƒes 
+-- e horas de voo requeridas no tipo de aviaÌƒo requerido para esse voo.
+CREATE OR REPLACE TRIGGER TG_VERIFICAR_PILOTO_ALOCADO
+BEFORE INSERT OR UPDATE ON TRIPULANTE_TECNICO
+FOR EACH ROW
+DECLARE
+  CAT_INSERTED INTEGER;
+  DIFF_HORAS_VOO INTEGER;
+BEGIN
+  -- Obter categoria de tripulante introduzida
+  SELECT T.CATEGORIA
+  INTO CAT_INSERTED
+  FROM TRIPULANTE T
+  WHERE T.TRIPULANTE_ID = :NEW.TRIPULANTE;
+   
+  IF (CAT_INSERTED <> 1)
+  THEN
+    RAISE_APPLICATION_ERROR( -20001, 'O tripulante inserido tem de ser da categoria piloto.');
+  END IF;
+  
+  IF (:NEW.FUNCAO = 'PILOTO')
+  THEN
+    -- Obter diferenÃ§a de horas de voo necessÃ¡rias (horas de voo do piloto - horas de voo requeridas, se positivo tem)
+    SELECT (HV.HORAS_VOO - TA.HORAS_VOO_MIN)
+    INTO DIFF_HORAS_VOO
+    FROM TIPO_AVIAO TA, HORAS_VOO HV
+    WHERE TA.MARCA_MODELO = HV.MARCA_MODELO
+      AND HV.PILOTO_ID = :NEW.TRIPULANTE
+      AND HV.MARCA_MODELO IN (
+                              SELECT A.MARCA_MODELO
+                              FROM AVIAO A, VOO_REGULAR VR, VIAGEM_PLANEADA VP
+                              WHERE A.NUM_SERIE = VR.AVIAO
+                                AND VR.VOO_REGULAR_ID = VP.VOO_REGULAR
+                                AND VP.VIAGEM_PLANEADA_ID = :NEW.VIAGEM_PLANEADA
+                              );
+    IF (DIFF_HORAS_VOO < 0)
+    THEN
+      RAISE_APPLICATION_ERROR( -20002, 'O tripulante inserido nÃ£o tem as horas de voo necessÃ¡rias para pilotar o tipo de aviÃ£o da viagem inserida.');
+    END IF;
+  END IF;
+END TG_VERIFICAR_PILOTO_ALOCADO;
+/
 
--- Trigger 11 para os tripulantes técnicos
+-- ### INICIO TESTE AO TRIGGER 10 ###
+INSERT INTO TRIPULANTE_TECNICO VALUES (1, 1, 'PILOTO'); -- INSERIR COMISSARIO (FALSE)
+INSERT INTO TRIPULANTE_TECNICO VALUES (1, 13, 'CO-PILOTO'); -- INSERIR CO-PILOTO (TRUE)
+INSERT INTO TRIPULANTE_TECNICO VALUES (1, 14, 'PILOTO'); -- INSERIR PILOTO S/ MIN HORAS (FALSE)
+INSERT INTO TRIPULANTE_TECNICO VALUES (1, 16, 'PILOTO'); -- INSERIR PILOTO C/ MIN HORAS (TRUE)
+
+-- SO APARECE O CO-PILOTO #13 E O PILOTO #16
+SELECT * FROM TRIPULANTE_TECNICO WHERE VIAGEM_PLANEADA = 1;
+-- ### FIM DO TESTE AO TRIGGER 10 ###
+
+-- 11.
+-- Trigger que impeÃ§a que um tripulante possa ser alocado a um voo se o nÃºmero
+-- de voos com inicio no mesmo dia for superior a 2 ou, no caso da 2Âª viagem do
+-- dia, o aeroporto de partida for diferente do da chegada da 1Âª viagem.
+
+-- Trigger 11 para os tripulantes tÃ©cnicos
 CREATE OR REPLACE TRIGGER TG_ALOCACAO_TRIPULANTE_TECNICO
 BEFORE INSERT OR UPDATE ON TRIPULANTE_TECNICO
 FOR EACH ROW
@@ -18,7 +72,7 @@ BEGIN
   FROM VIAGEM_PLANEADA
   WHERE VIAGEM_PLANEADA_ID = :NEW.VIAGEM_PLANEADA;
 
-  -- ver em quantas viagens já foi alocado
+  -- ver em quantas viagens jÃ¡ foi alocado
   SELECT COUNT(*) INTO NUMERO_VIAGENS_ALOCADAS
   FROM VIAGEM_PLANEADA VP, TRIPULANTE_TECNICO TT
   WHERE TT.VIAGEM_PLANEADA = VP.VIAGEM_PLANEADA_ID
@@ -47,7 +101,7 @@ BEGIN
     END IF;
     
   ELSIF (NUMERO_VIAGENS_ALOCADAS > 1) THEN
-    RAISE_APPLICATION_ERROR( -20002, 'Não pode ser alocado a mais de 2 voos num único dia.');
+    RAISE_APPLICATION_ERROR( -20002, 'NÃ£o pode ser alocado a mais de 2 voos num Ãºnico dia.');
   END IF;
   
 END;
@@ -68,7 +122,7 @@ BEGIN
   FROM VIAGEM_PLANEADA
   WHERE VIAGEM_PLANEADA_ID = :NEW.VIAGEM_PLANEADA;
 
-  -- ver em quantas viagens já foi alocado
+  -- ver em quantas viagens jÃ¡ foi alocado
   SELECT COUNT(*) INTO NUMERO_VIAGENS_ALOCADAS
   FROM VIAGEM_PLANEADA VP, TRIPULANTE_CABINE TC
   WHERE TC.VIAGEM_PLANEADA = VP.VIAGEM_PLANEADA_ID
@@ -97,13 +151,13 @@ BEGIN
     END IF;
     
   ELSIF (NUMERO_VIAGENS_ALOCADAS > 1) THEN
-    RAISE_APPLICATION_ERROR( -20002, 'Não pode ser alocado a mais de 2 voos num único dia.');
+    RAISE_APPLICATION_ERROR( -20002, 'NÃ£o pode ser alocado a mais de 2 voos num Ãºnico dia.');
   END IF;
   
 END;
 /
 
--- ### TESTAR O TRIGGER 11 PARA TRIPULANTES TÉCNICOS ###
+-- ### TESTAR O TRIGGER 11 PARA TRIPULANTES TÃ‰CNICOS ###
 
 INSERT INTO VOO VALUES (9, 1000, 120, 'VAR', 'LIS', 2); -- NEW
 INSERT INTO VOO_REGULAR VALUES (14, 1, 8, 'F04', 3, '20:00'); --NEW
