@@ -64,6 +64,13 @@ BEGIN
     || L_LUGARES_ECONOMICOS || ' | '
     || L_LUGARES_EXECUTIVOS || ' | ');
   END LOOP;
+EXCEPTION
+  WHEN NO_DATA_FOUND THEN
+    DBMS_OUTPUT.PUT_LINE('Registo inexistente '||SYSDATE);
+  WHEN TOO_MANY_ROWS THEN
+    DBMS_OUTPUT.PUT_LINE('Muitos registos '||SYSDATE);
+  WHEN OTHERS THEN
+    DBMS_OUTPUT.PUT_LINE('Ocorreu um erro '||SYSDATE);
 END;
 /
 
@@ -281,10 +288,10 @@ EXCEPTION
   WHEN PERIODO_INVALIDO THEN
     DBMS_OUTPUT.PUT_LINE('Periodo invalido. A data inicio tem de ser menor que a data final. '||SYSDATE);
   WHEN NO_DATA_FOUND THEN
-    DBMS_OUTPUT.PUT_LINE(' Registo inexistente '||SYSDATE);
+    DBMS_OUTPUT.PUT_LINE('Registo inexistente '||SYSDATE);
   WHEN TOO_MANY_ROWS THEN
-    DBMS_OUTPUT.PUT_LINE(' Muitos registos '||SYSDATE);
+    DBMS_OUTPUT.PUT_LINE('Muitos registos '||SYSDATE);
   WHEN OTHERS THEN
-    DBMS_OUTPUT.PUT_LINE(' Ocorreu um erro '||SYSDATE);
+    DBMS_OUTPUT.PUT_LINE('Ocorreu um erro '||SYSDATE);
 END;
 /
