@@ -55,7 +55,6 @@ END;
 -- Procedimento que atribua um aviaÌƒo e a tripulacÌ§aÌƒo a cada voo regular para um periÌ?odo. 
 -- Considere que a tripulacÌ§aÌƒo e o aviaÌƒo saÌƒo sempre os mesmos para todas as viagens que 
 -- se realizam nesse periÌ?odo correspondentes ao mesmo voo_regular.
-
 -- PARAMS: PLANO
 CREATE OR REPLACE PROCEDURE ATRIBUIR_AVIAO_TRIPULACAO(PLANO_PARAM IN INTEGER)
 IS
@@ -194,7 +193,6 @@ END;
 -- Procedimento que para um determinado período (datainicio/data fim), crie as
 -- viagens dos voos que se devem realizar durante esse período. Considera-se que
 -- já foram criados os voos regulares a efetuar nesse período.
-
 CREATE OR REPLACE PROCEDURE PC_CRIAR_VIAGENS
   (DATA_INICIO_PERIODO IN DATE, DATA_FIM_PERIODO IN DATE)
 IS

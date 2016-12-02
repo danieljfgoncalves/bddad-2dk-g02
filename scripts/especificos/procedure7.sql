@@ -1,0 +1,59 @@
+-- 7.
+-- Procedimento que permita obter as viagens que ainda não foram realizadas e
+-- que ainda têm lugares por reservar, indicando o código do voo, a data, a hora, o
+-- aeroporto origem, o aeroporto destino e o número de lugares disponíveis na
+-- classe económica e na executiva.
+CREATE OR REPLACE PROCEDURE PC_VIAGENS_DISPONIVEIS IS
+  L_VOO VOO%ROWTYPE;
+  L_MARCA_MODELO NUMBER;
+  L_LUGARES_ECONOMICOS NUMBER;
+  L_LUGARES_EXECUTIVOS NUMBER;
+  CURSOR VIAGENS_NAO_REALIZADAS
+      IS (SELECT VP.* FROM VIAGEM_PLANEADA VP
+          WHERE VP.VIAGEM_PLANEADA_ID NOT IN (SELECT VIAGEM_REALIZADA_ID FROM VIAGEM_REALIZADA)
+          AND VP.DATA_PLANEADA_PARTIDA - SYSDATE > 0);
+BEGIN
+  -- Cabecalho da tabela
+  dbms_output.put_line('| CODIGO_VOO | DATA_HORA_PARTIDA | AEROPORTO_ORIGEM | AEROPORTO_DESTINO | LUGARES_ECONOMICOS_DISPONIVEIS | LUGARES_EXECUTIVOS_DISPONIVEIS |');
+
+  FOR VNR IN VIAGENS_NAO_REALIZADAS
+  LOOP
+    -- Obter o voo da viagem_planeada em questão
+    SELECT V.* INTO L_VOO FROM VOO V, VOO_REGULAR VR
+    WHERE V.VOO_ID = VR.VOO_ID AND VR.VOO_REGULAR_ID = VNR.VOO_REGULAR;
+    
+    -- Obter marca modelo
+    SELECT A.MARCA_MODELO INTO L_MARCA_MODELO
+    FROM AVIAO A, VOO_REGULAR VR, VIAGEM_PLANEADA VP
+    WHERE VP.VOO_REGULAR = VR.VOO_REGULAR_ID AND VR.AVIAO = A.NUM_SERIE
+    AND VP.VIAGEM_PLANEADA_ID = VNR.VIAGEM_PLANEADA_ID;
+    
+    -- Obter numero de lugares disponiveis na classe economica
+    SELECT COUNT(*) INTO L_LUGARES_ECONOMICOS FROM LUGAR
+    WHERE MARCA_MODELO = L_MARCA_MODELO
+    AND CLASSE = (SELECT C.CLASSE_ID FROM CLASSE C WHERE C.NOME = 'ECONOMICA');
+    
+    -- Obter numero de lugares disponiveis na classe executiva
+    SELECT COUNT(*) INTO L_LUGARES_EXECUTIVOS FROM LUGAR
+    WHERE MARCA_MODELO = L_MARCA_MODELO
+    AND CLASSE = (SELECT C.CLASSE_ID FROM CLASSE C WHERE C.NOME = 'EXECUTIVA');
+    
+    -- imprimir a data
+    dbms_output.put_line('| ' || L_VOO.VOO_ID || ' | '
+    || TO_CHAR(VNR.DATA_PLANEADA_PARTIDA, 'YYYY/MM/DD HH:MI') || ' | '
+    || L_VOO.AEROPORTO_ORIGEM || ' | '
+    || L_VOO.AEROPORTO_DESTINO || ' | '
+    || L_LUGARES_ECONOMICOS || ' | '
+    || L_LUGARES_EXECUTIVOS || ' | ');
+  END LOOP;
+END;
+/
+
+BEGIN
+  PC_VIAGENS_DISPONIVEIS;
+END;
+/
+
+SELECT COUNT(*) FROM LUGAR
+    WHERE MARCA_MODELO = 2
+    AND CLASSE = (SELECT C.CLASSE_ID FROM CLASSE C WHERE C.NOME = 'ECONOMICA');

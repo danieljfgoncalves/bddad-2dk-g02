@@ -2,7 +2,6 @@
 -- 4. 
 -- Função que para um voo de ligação entre dois aeroportos devolva 
 -- o co�?digo do voo regular com o preço mais baixo dessa ligação para uma dada classe.
-
 CREATE OR REPLACE FUNCTION FC_VOO_MAIS_BARATO 
   (VOO_PARAM IN INTEGER, CLASSE_PARAM IN INTEGER)
   RETURN INTEGER 
