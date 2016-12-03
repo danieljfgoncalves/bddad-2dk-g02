@@ -1,0 +1,76 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="VOO_REGULAR" directorySegmentName="seg_0" id="715744D3-5A9F-AF7C-337A-CE602A13198F">
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:08 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<schemaObject>F5EF44C9-14FC-38B5-6C4E-A07CACC361A5</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>804D78CB-7557-363E-F816-396444CEEDB6</segment>
+<tableSpace>FDB72ABD-0093-85C8-0691-EDFD17069CCB</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="VOO_ID" id="324CA4FB-CB2D-4A09-AB1F-E6D6DD159424">
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="VOO_REGULAR_ID" id="544B813E-75AA-B264-663F-F8EA21870FCF">
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="DIA_DA_SEMANA" id="7EB23F04-EA56-30CC-A1AA-2A07FD616697">
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="HORARIO_PARTIDA" id="8B736182-3BFD-F72F-A172-67F8D6EE8F8E">
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="AVIAO" id="A75C388A-EF87-748C-CFF3-B64E23318FAD">
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="PLANO_ID" id="C15FFC1E-4CE5-D760-2F81-4C3C34365F58">
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="SYS_C00941239" id="653348C6-CD4B-20C2-3195-022588464631">
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:26 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="SYS_C00941241" id="936BBB1A-AC27-0392-49C4-DC80ABAC97BD">
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:26 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="SYS_C00941240" id="ADD77A9C-14D2-6B42-333A-3F2F646001A1">
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:26 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="VOO_REGULAR_PK" id="3D97BB46-B76A-5729-4C7B-CF10557FF8DD">
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:22 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<schemaObject>F5EF44C9-14FC-38B5-6C4E-A07CACC361A5</schemaObject>
+<segment>15CB61A7-B7F7-0A99-5068-FB7EAB75C716</segment>
+<tableSpace>FDB72ABD-0093-85C8-0691-EDFD17069CCB</tableSpace>
+<indexSegment>15CB61A7-B7F7-0A99-5068-FB7EAB75C716</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

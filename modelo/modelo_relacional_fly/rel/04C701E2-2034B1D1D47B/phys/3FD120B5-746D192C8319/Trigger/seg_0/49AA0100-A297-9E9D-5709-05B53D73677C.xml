@@ -1,0 +1,14 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TriggerOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.TriggerOraclev10g" name="TG_R2_NUMERO_LUGARES" directorySegmentName="seg_0" id="49AA0100-A297-9E9D-5709-05B53D73677C">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>BDDAD_2DK_6B</sourceObjSchema>
+<sourceObjName>TG_R2_NUMERO_LUGARES</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:24 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<actions>INSERT, UPDATE</actions>
+<body>DECLARE&lt;br/&gt;  TOTAL_LUGARES_EXISTENTES NUMBER;&lt;br/&gt;  TOTAL_LUGARES_POSSIVEIS NUMBER;&lt;br/&gt;  LUGARES_TODOS_CRIADO EXCEPTION;&lt;br/&gt;BEGIN&lt;br/&gt;  SELECT COUNT(*) INTO TOTAL_LUGARES_EXISTENTES FROM LUGAR&lt;br/&gt;  WHERE MARCA_MODELO = :NEW.MARCA_MODELO;&lt;br/&gt;  &lt;br/&gt;  SELECT TOTAL_LUGARES INTO TOTAL_LUGARES_POSSIVEIS FROM TIPO_AVIAO&lt;br/&gt;  WHERE MARCA_MODELO = :NEW.MARCA_MODELO;&lt;br/&gt;  &lt;br/&gt;  IF TOTAL_LUGARES_EXISTENTES &gt;= TOTAL_LUGARES_POSSIVEIS THEN&lt;br/&gt;    RAISE_APPLICATION_ERROR( -20101, &apos;Já foram inseridos todos os lugares.&apos;);&lt;br/&gt;  END IF;&lt;br/&gt;END;</body>
+<triggerTime>BEFORE</triggerTime>
+<owner>140EE914-F5D1-E640-44BA-66AC7E9285C5</owner>
+<table>68F6F730-1404-6588-A3EB-495A19835B44</table>
+</TriggerOraclev10g>

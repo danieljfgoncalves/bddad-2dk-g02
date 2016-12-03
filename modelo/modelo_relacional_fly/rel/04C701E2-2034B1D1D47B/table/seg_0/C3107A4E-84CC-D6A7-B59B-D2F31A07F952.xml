@@ -1,0 +1,142 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="C3107A4E-84CC-D6A7-B59B-D2F31A07F952" schemaObject="F5EF44C9-14FC-38B5-6C4E-A07CACC361A5" name="AEROPORTO">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>BDDAD_2DK_6B</sourceObjSchema>
+<sourceObjName>AEROPORTO</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:06 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IATA_ID" id="C2AA6C8F-CCCE-EC43-04F4-0190643578C7">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>AEROPORTO</sourceObjSchema>
+<sourceObjName>IATA_ID</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>3 BYTE</dataTypeSize>
+<ownDataTypeParameters>3 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NOME" id="9B8B1C31-3DB9-483C-F0FD-B204E510668C">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>AEROPORTO</sourceObjSchema>
+<sourceObjName>NOME</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<ownDataTypeParameters>50 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CIDADE_ID" id="32626367-4829-FE7D-4E92-25E8E4B09D04">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>AEROPORTO</sourceObjSchema>
+<sourceObjName>CIDADE_ID</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="E1C8EA2B-5500-3DC6-FB59-C1FC752147C6" referredColumn="677E5C4D-293F-C09D-8FED-E4814749454C"/>
+</associations>
+</Column>
+<Column name="LONGITUDE_ID" id="6C95B49A-11EB-30C5-122B-B45A106794E6">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>AEROPORTO</sourceObjSchema>
+<sourceObjName>LONGITUDE_ID</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="1E4D7B47-75B7-BEBB-EB55-373435E8DDFA" referredColumn="24AAE37B-5A18-D9ED-7CF0-48E2DABC059E"/>
+</associations>
+</Column>
+<Column name="LATITUDE_ID" id="2A27D91A-0C9F-98F7-E22A-0C38CB3CBD0F">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>AEROPORTO</sourceObjSchema>
+<sourceObjName>LATITUDE_ID</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="13E6B643-B643-7024-8BF4-A75B27D8550F" referredColumn="23D077E2-B46A-6A3D-227A-3AAD88933E49"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="07BC1F39-2E9C-925E-E60F-964A4D48D9B9" schemaObject="F5EF44C9-14FC-38B5-6C4E-A07CACC361A5" name="AEROPORTO_PK">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>BDDAD_2DK_6B</sourceObjSchema>
+<sourceObjName>SYS_C00941209</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:15 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C2AA6C8F-CCCE-EC43-04F4-0190643578C7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="0A52E0F7-5B98-7DC9-62F6-773E3F8F546D" name="SYS_C00941210">
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:25 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="32626367-4829-FE7D-4E92-25E8E4B09D04"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="33E2363D-5EFB-EAD1-7596-8AD30DFD4866" name="SYS_C00941211">
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:25 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6C95B49A-11EB-30C5-122B-B45A106794E6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="5B93643D-16C7-3F56-5567-F59C2545882C" name="SYS_C00941212">
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:25 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2A27D91A-0C9F-98F7-E22A-0C38CB3CBD0F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

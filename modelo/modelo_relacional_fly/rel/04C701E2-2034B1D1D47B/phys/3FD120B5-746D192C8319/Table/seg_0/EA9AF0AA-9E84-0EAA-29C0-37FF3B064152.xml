@@ -1,0 +1,76 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="VOO" directorySegmentName="seg_0" id="EA9AF0AA-9E84-0EAA-29C0-37FF3B064152">
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:08 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<schemaObject>F5EF44C9-14FC-38B5-6C4E-A07CACC361A5</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>804D78CB-7557-363E-F816-396444CEEDB6</segment>
+<tableSpace>FDB72ABD-0093-85C8-0691-EDFD17069CCB</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="DURACAO_MINUTOS" id="2F0D3086-8D43-8582-EDBC-D628705C7AE9">
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="CAT_VOO_ID" id="2FDAA010-F81E-3CCB-F759-B8E3B4B5DFC7">
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="AEROPORTO_ORIGEM" id="7027F9D5-ACB2-BD51-B5A9-AD38EC2F72D6">
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="DISTANCIA" id="79FF69AF-8CD3-3876-DCC4-F6B2F590A33F">
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="VOO_ID" id="D2FBAC4C-918B-0DD0-4E29-73D7EE8C4C3B">
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="AEROPORTO_DESTINO" id="F8DBB7C1-3494-D690-213F-B3949774646C">
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="SYS_C00941224" id="5813D08A-3850-5FD5-D057-D21B30858355">
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:26 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="SYS_C00941225" id="BAAC64ED-D384-97EB-B703-D7A1DA3803FA">
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:26 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="SYS_C00941226" id="DA7EC5DE-F16E-90F1-C4BF-272072114C7E">
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:26 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="VOO_PK" id="42DF1511-73F1-5FBF-3133-CE3D0A7E95D1">
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:22 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<schemaObject>F5EF44C9-14FC-38B5-6C4E-A07CACC361A5</schemaObject>
+<segment>15CB61A7-B7F7-0A99-5068-FB7EAB75C716</segment>
+<tableSpace>FDB72ABD-0093-85C8-0691-EDFD17069CCB</tableSpace>
+<indexSegment>15CB61A7-B7F7-0A99-5068-FB7EAB75C716</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

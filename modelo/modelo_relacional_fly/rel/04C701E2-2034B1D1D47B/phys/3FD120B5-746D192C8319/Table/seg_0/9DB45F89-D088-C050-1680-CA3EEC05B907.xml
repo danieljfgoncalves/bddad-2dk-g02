@@ -1,0 +1,39 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="ROTA" directorySegmentName="seg_0" id="9DB45F89-D088-C050-1680-CA3EEC05B907">
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:08 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<schemaObject>F5EF44C9-14FC-38B5-6C4E-A07CACC361A5</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>804D78CB-7557-363E-F816-396444CEEDB6</segment>
+<tableSpace>FDB72ABD-0093-85C8-0691-EDFD17069CCB</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="DESCRICAO" id="2D117908-3DFD-5D6B-8738-894E4FCC8FFB">
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ROTA_ID" id="5BC69277-2B1F-6F76-8646-6284493579AA">
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="ROTA_PK" id="3B598B90-B068-450A-2345-9B28CB43CB5A">
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:22 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<schemaObject>F5EF44C9-14FC-38B5-6C4E-A07CACC361A5</schemaObject>
+<segment>15CB61A7-B7F7-0A99-5068-FB7EAB75C716</segment>
+<tableSpace>FDB72ABD-0093-85C8-0691-EDFD17069CCB</tableSpace>
+<indexSegment>15CB61A7-B7F7-0A99-5068-FB7EAB75C716</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

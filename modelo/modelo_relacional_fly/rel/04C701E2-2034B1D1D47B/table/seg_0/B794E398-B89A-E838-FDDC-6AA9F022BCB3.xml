@@ -1,0 +1,59 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="B794E398-B89A-E838-FDDC-6AA9F022BCB3" schemaObject="F5EF44C9-14FC-38B5-6C4E-A07CACC361A5" name="MARCA">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>BDDAD_2DK_6B</sourceObjSchema>
+<sourceObjName>MARCA</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:07 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="MARCA_ID" id="1B4F56BA-F693-9862-8F2A-D5ADF8EA31C3">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>MARCA</sourceObjSchema>
+<sourceObjName>MARCA_ID</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NOME" id="30EFEC09-8174-0068-3018-1C7F5942C666">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>MARCA</sourceObjSchema>
+<sourceObjName>NOME</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<ownDataTypeParameters>50 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="757D7A1E-FCF3-AA49-0C40-C4D199ECB35C" schemaObject="F5EF44C9-14FC-38B5-6C4E-A07CACC361A5" name="MARCA_PK">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>BDDAD_2DK_6B</sourceObjSchema>
+<sourceObjName>SYS_C00941155</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:15 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1B4F56BA-F693-9862-8F2A-D5ADF8EA31C3"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

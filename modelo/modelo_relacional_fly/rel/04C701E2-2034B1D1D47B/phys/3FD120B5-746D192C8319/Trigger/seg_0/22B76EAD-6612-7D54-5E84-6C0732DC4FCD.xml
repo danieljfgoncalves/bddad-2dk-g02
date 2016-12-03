@@ -1,0 +1,14 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TriggerOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.TriggerOraclev10g" name="TG_ALOCACAO_TRIPULANTE_CABINE" directorySegmentName="seg_0" id="22B76EAD-6612-7D54-5E84-6C0732DC4FCD">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>BDDAD_2DK_6B</sourceObjSchema>
+<sourceObjName>TG_ALOCACAO_TRIPULANTE_CABINE</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:24 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<actions>INSERT, UPDATE</actions>
+<body>DECLARE&lt;br/&gt;  NUMERO_VIAGENS_ALOCADAS NUMBER;&lt;br/&gt;  DATA_DA_ALOCACAO DATE;&lt;br/&gt;  AERO_DEST_VIAGEM_1 VOO.AEROPORTO_DESTINO%TYPE;&lt;br/&gt;  AERO_ORIGEM_VIAGEM_2  VOO.AEROPORTO_ORIGEM%TYPE;&lt;br/&gt;BEGIN&lt;br/&gt;  -- Obter a data para a qual o tripulante foi alocado&lt;br/&gt;  SELECT DATA_PLANEADA_PARTIDA INTO DATA_DA_ALOCACAO&lt;br/&gt;  FROM VIAGEM_PLANEADA&lt;br/&gt;  WHERE VIAGEM_PLANEADA_ID = :NEW.VIAGEM_PLANEADA;&lt;br/&gt;&lt;br/&gt;  -- ver em quantas viagens jÃ¡ foi alocado&lt;br/&gt;  SELECT COUNT(*) INTO NUMERO_VIAGENS_ALOCADAS&lt;br/&gt;  FROM VIAGEM_PLANEADA VP, TRIPULANTE_CABINE TC&lt;br/&gt;  WHERE TC.VIAGEM_PLANEADA = VP.VIAGEM_PLANEADA_ID&lt;br/&gt;  AND TC.TRIPULANTE = :NEW.TRIPULANTE&lt;br/&gt;  AND TRUNC(VP.DATA_PLANEADA_PARTIDA) = TRUNC(DATA_DA_ALOCACAO);&lt;br/&gt;  &lt;br/&gt;  IF (NUMERO_VIAGENS_ALOCADAS = 1) THEN&lt;br/&gt;    -- Obter aeroporto destino da primeira viagem&lt;br/&gt;    SELECT V.AEROPORTO_DESTINO INTO AERO_DEST_VIAGEM_1&lt;br/&gt;    FROM TRIPULANTE_CABINE TC, VIAGEM_PLANEADA VP, VOO_REGULAR VR, VOO V&lt;br/&gt;    WHERE TC.VIAGEM_PLANEADA = VP.VIAGEM_PLANEADA_ID&lt;br/&gt;    AND TC.TRIPULANTE = :NEW.TRIPULANTE&lt;br/&gt;    AND VP.VOO_REGULAR = VR.VOO_REGULAR_ID&lt;br/&gt;    AND VR.VOO_ID = V.VOO_ID&lt;br/&gt;    AND TRUNC(VP.DATA_PLANEADA_PARTIDA) = TRUNC(DATA_DA_ALOCACAO);&lt;br/&gt;&lt;br/&gt;    -- Obter aeroporto origem da segunda viagem&lt;br/&gt;    SELECT AEROPORTO_ORIGEM INTO AERO_ORIGEM_VIAGEM_2&lt;br/&gt;    FROM VIAGEM_PLANEADA VP, VOO_REGULAR VR, VOO V&lt;br/&gt;    WHERE VP.VIAGEM_PLANEADA_ID = :NEW.VIAGEM_PLANEADA&lt;br/&gt;    AND VP.VOO_REGULAR = VR.VOO_REGULAR_ID&lt;br/&gt;    AND VR.VOO_ID = V.VOO_ID;&lt;br/&gt;&lt;br/&gt;    IF (AERO_ORIGEM_VIAGEM_2 &lt;&gt; AERO_DEST_VIAGEM_1) THEN&lt;br/&gt;      RAISE_APPLICATION_ERROR( -20001, &apos;O aeroporto origem da segunda viagem tem de ser o aeroporto destino da primeira viagem.&apos;);&lt;br/&gt;    END IF;&lt;br/&gt;    &lt;br/&gt;  ELSIF (NUMERO_VIAGENS_ALOCADAS &gt; 1) THEN&lt;br/&gt;    RAISE_APPLICATION_ERROR( -20002, &apos;NÃ£o pode ser alocado a mais de 2 voos num Ãºnico dia.&apos;);&lt;br/&gt;  END IF;&lt;br/&gt;  &lt;br/&gt;END;</body>
+<triggerTime>BEFORE</triggerTime>
+<owner>140EE914-F5D1-E640-44BA-66AC7E9285C5</owner>
+<table>ED949599-6758-749F-C31A-F71CF9BE85BE</table>
+</TriggerOraclev10g>

@@ -1,0 +1,73 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="527202F2-C2F1-F83B-B61F-118D5DB8CABE" schemaObject="F5EF44C9-14FC-38B5-6C4E-A07CACC361A5" name="CATEGORIA_TRIP">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>BDDAD_2DK_6B</sourceObjSchema>
+<sourceObjName>CATEGORIA_TRIP</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:07 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="CATEGORIA_TRIP_ID" id="60EE81E6-8F15-1712-CCCC-1F4FB6FE62C9">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>CATEGORIA_TRIP</sourceObjSchema>
+<sourceObjName>CATEGORIA_TRIP_ID</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NOME" id="2DE25EE1-39FA-A78B-A5D6-222DACAD6206">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>CATEGORIA_TRIP</sourceObjSchema>
+<sourceObjName>NOME</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<ownDataTypeParameters>50 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="SALARIO_MENSAL" id="2BE3D22E-A000-FCAB-51B6-B065BB7355A2">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>CATEGORIA_TRIP</sourceObjSchema>
+<sourceObjName>SALARIO_MENSAL</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="726D375B-C387-CFE0-F175-4C144B283CFE" schemaObject="F5EF44C9-14FC-38B5-6C4E-A07CACC361A5" name="CATEGORIA_TRIP_PK">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>BDDAD_2DK_6B</sourceObjSchema>
+<sourceObjName>SYS_C00941180</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:15 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="60EE81E6-8F15-1712-CCCC-1F4FB6FE62C9"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

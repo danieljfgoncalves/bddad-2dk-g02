@@ -1,0 +1,102 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="962D6C07-FBFE-B0D4-E291-EC888072E5CC" schemaObject="F5EF44C9-14FC-38B5-6C4E-A07CACC361A5" name="PASSAGEIRO">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>BDDAD_2DK_6B</sourceObjSchema>
+<sourceObjName>PASSAGEIRO</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:07 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="PASSAGEIRO_ID" id="6C226B0E-20DE-C1DC-5A34-939DA513773D">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>PASSAGEIRO</sourceObjSchema>
+<sourceObjName>PASSAGEIRO_ID</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PRIMEIRO_NOME" id="1F9426FF-80DB-5A77-AF9E-69A6334F6624">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>PASSAGEIRO</sourceObjSchema>
+<sourceObjName>PRIMEIRO_NOME</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<ownDataTypeParameters>50 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ULTIMO_NOME" id="A1B0D05F-B4E8-CC73-70C1-700B4EBDAB57">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>PASSAGEIRO</sourceObjSchema>
+<sourceObjName>ULTIMO_NOME</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<ownDataTypeParameters>50 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TIPO_DOCUMENTO" id="877D693A-0A7E-0865-A7B5-49365B034A80">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>PASSAGEIRO</sourceObjSchema>
+<sourceObjName>TIPO_DOCUMENTO</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<ownDataTypeParameters>50 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NUM_DOCUMENTO" id="3DFB0207-5197-BDBA-2745-92515D74630D">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>PASSAGEIRO</sourceObjSchema>
+<sourceObjName>NUM_DOCUMENTO</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="B4283DB4-D882-9FE5-F5F4-72644902DB4B" schemaObject="F5EF44C9-14FC-38B5-6C4E-A07CACC361A5" name="PASSAGEIRO_PK">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>BDDAD_2DK_6B</sourceObjSchema>
+<sourceObjName>SYS_C00941267</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:15 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6C226B0E-20DE-C1DC-5A34-939DA513773D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

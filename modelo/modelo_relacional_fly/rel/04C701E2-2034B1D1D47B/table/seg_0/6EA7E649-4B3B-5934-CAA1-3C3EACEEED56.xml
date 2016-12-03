@@ -1,0 +1,87 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="6EA7E649-4B3B-5934-CAA1-3C3EACEEED56" schemaObject="F5EF44C9-14FC-38B5-6C4E-A07CACC361A5" name="TRIPULANTE">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>BDDAD_2DK_6B</sourceObjSchema>
+<sourceObjName>TRIPULANTE</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:08 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="TRIPULANTE_ID" id="2D4F72AD-24F4-EE57-DD20-6CBC4FE42554">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>TRIPULANTE</sourceObjSchema>
+<sourceObjName>TRIPULANTE_ID</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NOME" id="DDFE1263-2D65-78B5-F31E-29E7C2A4107B">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>TRIPULANTE</sourceObjSchema>
+<sourceObjName>NOME</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<ownDataTypeParameters>50 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CATEGORIA" id="6C8EAB28-9C8B-63E5-BE95-464D09F60F96">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>TRIPULANTE</sourceObjSchema>
+<sourceObjName>CATEGORIA</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="713A27E2-631E-A673-885C-90154D380994" referredColumn="60EE81E6-8F15-1712-CCCC-1F4FB6FE62C9"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="749862EB-1373-B57B-8EB1-54B35ABFC236" schemaObject="F5EF44C9-14FC-38B5-6C4E-A07CACC361A5" name="TRIPULANTE_PK">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>BDDAD_2DK_6B</sourceObjSchema>
+<sourceObjName>SYS_C00941183</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:15 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2D4F72AD-24F4-EE57-DD20-6CBC4FE42554"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E5E72E60-0B60-6F98-F758-82F8CA5E7956" name="SYS_C00941184">
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:25 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6C8EAB28-9C8B-63E5-BE95-464D09F60F96"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

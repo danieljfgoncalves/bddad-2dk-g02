@@ -1,0 +1,115 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="A1CFF270-5094-B536-3878-6150A920AFC5" schemaObject="F5EF44C9-14FC-38B5-6C4E-A07CACC361A5" name="PRECO">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>BDDAD_2DK_6B</sourceObjSchema>
+<sourceObjName>PRECO</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:07 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="VOO_REGULAR_ID" id="20BA3784-A70D-AC2E-808F-BCB830932ACB">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>PRECO</sourceObjSchema>
+<sourceObjName>VOO_REGULAR_ID</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="49213971-E3DF-7EF1-BD4F-820B560BD361" referredColumn="544B813E-75AA-B264-663F-F8EA21870FCF"/>
+</associations>
+</Column>
+<Column name="CLASSE_ID" id="8CE0EDD1-4F32-155A-7455-11524B04615F">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>PRECO</sourceObjSchema>
+<sourceObjName>CLASSE_ID</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="730C33D2-5843-F97A-5963-C583844F75D1" referredColumn="7293B62B-C7A9-0A2F-866E-B4CFD7E2AB0E"/>
+</associations>
+</Column>
+<Column name="PRECO" id="0BA92F98-4EE9-0366-C454-278D297A90A5">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>PRECO</sourceObjSchema>
+<sourceObjName>PRECO</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="77E4F537-C139-FCFA-3FBD-AEDF4527151C" name="PK_PRECO">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>BDDAD_2DK_6B</sourceObjSchema>
+<sourceObjName>PK_PRECO</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:21 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="20BA3784-A70D-AC2E-808F-BCB830932ACB"/>
+<colUsage columnID="8CE0EDD1-4F32-155A-7455-11524B04615F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D83C7471-4590-3764-A30C-6CF304588789" schemaObject="F5EF44C9-14FC-38B5-6C4E-A07CACC361A5" name="PK_PRECO">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>BDDAD_2DK_6B</sourceObjSchema>
+<sourceObjName>PK_PRECO</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:15 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="20BA3784-A70D-AC2E-808F-BCB830932ACB"/>
+<colUsage columnID="8CE0EDD1-4F32-155A-7455-11524B04615F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B1F1BD27-7E73-2173-58D1-AE6AC2947CDB" name="SYS_C00941249">
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:25 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="20BA3784-A70D-AC2E-808F-BCB830932ACB"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="7FA61E20-36A6-3911-22DD-ABE2022086BC" name="SYS_C00941250">
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:25 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8CE0EDD1-4F32-155A-7455-11524B04615F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

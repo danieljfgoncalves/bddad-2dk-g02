@@ -1,0 +1,87 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="40C361D2-A471-2BD3-619A-F802B2721B9A" schemaObject="F5EF44C9-14FC-38B5-6C4E-A07CACC361A5" name="CIDADE">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>BDDAD_2DK_6B</sourceObjSchema>
+<sourceObjName>CIDADE</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:07 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="CIDADE_ID" id="677E5C4D-293F-C09D-8FED-E4814749454C">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>CIDADE</sourceObjSchema>
+<sourceObjName>CIDADE_ID</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PAIS_ID" id="08FC5EBE-C4F3-1E19-3898-CDF6A94CD476">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>CIDADE</sourceObjSchema>
+<sourceObjName>PAIS_ID</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,3,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="172ED224-4AF2-5F23-92E3-BC16CF095C7C" referredColumn="CA3085B4-3771-01AF-4C0F-843FF4B6C6A1"/>
+</associations>
+</Column>
+<Column name="NOME" id="DB1AF2FF-DE42-6133-7B19-D5AFE38C91BF">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>CIDADE</sourceObjSchema>
+<sourceObjName>NOME</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<ownDataTypeParameters>50 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="59FC6DDA-9B6A-F123-64B8-C4FEC159CD93" schemaObject="F5EF44C9-14FC-38B5-6C4E-A07CACC361A5" name="CIDADE_PK">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>BDDAD_2DK_6B</sourceObjSchema>
+<sourceObjName>SYS_C00941203</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:15 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="677E5C4D-293F-C09D-8FED-E4814749454C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="9AC91821-12A4-89DA-83CB-45527990A54E" name="SYS_C00941204">
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:25 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="08FC5EBE-C4F3-1E19-3898-CDF6A94CD476"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

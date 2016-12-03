@@ -1,0 +1,115 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="9FB82C5E-4387-14FF-7FAF-E8C110EAC031" schemaObject="F5EF44C9-14FC-38B5-6C4E-A07CACC361A5" name="BONUS">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>BDDAD_2DK_6B</sourceObjSchema>
+<sourceObjName>BONUS</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:07 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="CAT_VOO_ID" id="7F035494-6234-B0C7-537B-DE5C8B329AE0">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>BONUS</sourceObjSchema>
+<sourceObjName>CAT_VOO_ID</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="DDD63BCE-4416-AA66-86E0-29779A2B9A56" referredColumn="8007B94E-7D13-50DF-416B-2F9DB20D3836"/>
+</associations>
+</Column>
+<Column name="CATEGORIA_TRIP_ID" id="71DC8BD7-FC66-4B51-79E1-AD76AF07CABE">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>BONUS</sourceObjSchema>
+<sourceObjName>CATEGORIA_TRIP_ID</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="0E86A3FD-E265-F344-173D-255075B9809E" referredColumn="60EE81E6-8F15-1712-CCCC-1F4FB6FE62C9"/>
+</associations>
+</Column>
+<Column name="BONUS" id="8D9DC870-E9CC-6342-1B78-CD418027EC91">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>BONUS</sourceObjSchema>
+<sourceObjName>BONUS</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="42A0B8C1-AA6A-90C5-3652-B3B8FFDA570B" name="PK_BONUS">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>BDDAD_2DK_6B</sourceObjSchema>
+<sourceObjName>PK_BONUS</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:20 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7F035494-6234-B0C7-537B-DE5C8B329AE0"/>
+<colUsage columnID="71DC8BD7-FC66-4B51-79E1-AD76AF07CABE"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="87352862-EE0F-B49D-6BA4-77ACBF68267E" schemaObject="F5EF44C9-14FC-38B5-6C4E-A07CACC361A5" name="PK_BONUS">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>BDDAD_2DK_6B</sourceObjSchema>
+<sourceObjName>PK_BONUS</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:15 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7F035494-6234-B0C7-537B-DE5C8B329AE0"/>
+<colUsage columnID="71DC8BD7-FC66-4B51-79E1-AD76AF07CABE"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="42B25BAA-8AED-47F8-85FC-C961478EE741" name="SYS_C00941278">
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:25 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7F035494-6234-B0C7-537B-DE5C8B329AE0"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="142C46CC-399F-D47E-DDC3-33E4E387F4B2" name="SYS_C00941279">
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:25 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="71DC8BD7-FC66-4B51-79E1-AD76AF07CABE"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

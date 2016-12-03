@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<LogicalDesign class="oracle.dbtools.crest.model.design.logical.LogicalDesign" name="Logical" id="88B36B70-FE6E-2B6D-59B1-78F73FF2D8B8" mainViewID="47ED6A6A-5133-DD0F-F4D1-2AD8E151F58A">
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:25:16 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</LogicalDesign>
