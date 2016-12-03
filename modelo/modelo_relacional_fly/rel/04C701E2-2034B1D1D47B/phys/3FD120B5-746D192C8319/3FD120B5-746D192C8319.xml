@@ -1,0 +1,6 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<StorageDesignOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.StorageDesignOraclev12c" name="Oracle Database 12c" id="1810A1F6-A754-4BEA-B7FD-93A5DE2F2E19" siteID="3FD120B5-9F4E-6278-D5E2-746D192C8319" siteName="Oracle Database 12c" siteType="11">
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:03 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+</StorageDesignOraclev12c>

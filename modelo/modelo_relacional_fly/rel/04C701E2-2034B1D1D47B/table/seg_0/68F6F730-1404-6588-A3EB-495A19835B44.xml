@@ -1,0 +1,125 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="68F6F730-1404-6588-A3EB-495A19835B44" schemaObject="F5EF44C9-14FC-38B5-6C4E-A07CACC361A5" name="LUGAR">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>BDDAD_2DK_6B</sourceObjSchema>
+<sourceObjName>LUGAR</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:07 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="NUM_FILA" id="C507611B-3D17-1043-0D95-B27013C02EFE">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>LUGAR</sourceObjSchema>
+<sourceObjName>NUM_FILA</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="LETRA" id="BD9581D4-DFCE-F37A-A9C2-91A763C2417B">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>LUGAR</sourceObjSchema>
+<sourceObjName>LETRA</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>1 BYTE</dataTypeSize>
+<ownDataTypeParameters>1 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="MARCA_MODELO" id="7A728FF0-5F9A-0028-65E4-11AA15E2FCB9">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>LUGAR</sourceObjSchema>
+<sourceObjName>MARCA_MODELO</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="682FD0CB-4BEF-DFCE-2796-A8B662AE6D79" referredColumn="3B9CC522-D0EA-6978-DD26-32ABA58C391E"/>
+</associations>
+</Column>
+<Column name="CLASSE" id="4F9477B2-D0ED-2A93-AC2B-9632FD30753C">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>LUGAR</sourceObjSchema>
+<sourceObjName>CLASSE</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="682FD0CB-4BEF-DFCE-2796-A8B662AE6D79" referredColumn="8D616B85-2390-65E8-C79B-97091157B158"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="425B5036-C91C-BA95-6F9B-69EB5E1C68A3" name="PK_LUGAR">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>BDDAD_2DK_6B</sourceObjSchema>
+<sourceObjName>PK_LUGAR</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:21 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C507611B-3D17-1043-0D95-B27013C02EFE"/>
+<colUsage columnID="BD9581D4-DFCE-F37A-A9C2-91A763C2417B"/>
+<colUsage columnID="7A728FF0-5F9A-0028-65E4-11AA15E2FCB9"/>
+<colUsage columnID="4F9477B2-D0ED-2A93-AC2B-9632FD30753C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="ADF770BB-5282-F1DB-F4DE-9208810DB769" schemaObject="F5EF44C9-14FC-38B5-6C4E-A07CACC361A5" name="PK_LUGAR">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>BDDAD_2DK_6B</sourceObjSchema>
+<sourceObjName>PK_LUGAR</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:15 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C507611B-3D17-1043-0D95-B27013C02EFE"/>
+<colUsage columnID="BD9581D4-DFCE-F37A-A9C2-91A763C2417B"/>
+<colUsage columnID="7A728FF0-5F9A-0028-65E4-11AA15E2FCB9"/>
+<colUsage columnID="4F9477B2-D0ED-2A93-AC2B-9632FD30753C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D0860330-682A-3CDB-AA6A-C4C08675CC61" name="FK_LUGAR">
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:25 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7A728FF0-5F9A-0028-65E4-11AA15E2FCB9"/>
+<colUsage columnID="4F9477B2-D0ED-2A93-AC2B-9632FD30753C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

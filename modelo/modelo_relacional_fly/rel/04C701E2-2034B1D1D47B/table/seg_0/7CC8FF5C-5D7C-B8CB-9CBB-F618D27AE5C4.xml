@@ -1,0 +1,101 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="7CC8FF5C-5D7C-B8CB-9CBB-F618D27AE5C4" schemaObject="F5EF44C9-14FC-38B5-6C4E-A07CACC361A5" name="VIAGEM_PLANEADA">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>BDDAD_2DK_6B</sourceObjSchema>
+<sourceObjName>VIAGEM_PLANEADA</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:08 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="VIAGEM_PLANEADA_ID" id="6F0CBA88-9D65-0D5A-1E7A-DB87C5C2E27D">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>VIAGEM_PLANEADA</sourceObjSchema>
+<sourceObjName>VIAGEM_PLANEADA_ID</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="VOO_REGULAR" id="68DACB52-13BC-AB9A-16B2-C20F1E39A0F2">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>VIAGEM_PLANEADA</sourceObjSchema>
+<sourceObjName>VOO_REGULAR</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="20D42080-CC20-B3B8-A624-FD7936CFE909" referredColumn="544B813E-75AA-B264-663F-F8EA21870FCF"/>
+</associations>
+</Column>
+<Column name="DATA_PLANEADA_PARTIDA" id="0BEB675E-9592-DEBE-0CB4-4B6672F12FEA">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>VIAGEM_PLANEADA</sourceObjSchema>
+<sourceObjName>DATA_PLANEADA_PARTIDA</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DATA_PLANEADA_CHEGADA" id="C0C6C192-65EC-C21E-1406-7D06327E5A67">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>VIAGEM_PLANEADA</sourceObjSchema>
+<sourceObjName>DATA_PLANEADA_CHEGADA</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="91EA77FD-7382-AE35-CDB5-CD67F928955F" schemaObject="F5EF44C9-14FC-38B5-6C4E-A07CACC361A5" name="VIAGEM_PLANEADA_PK">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>BDDAD_2DK_6B</sourceObjSchema>
+<sourceObjName>SYS_C00941245</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:15 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6F0CBA88-9D65-0D5A-1E7A-DB87C5C2E27D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="86A1A12A-071C-A1AA-9D48-1520595D6327" name="SYS_C00941246">
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:26 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="68DACB52-13BC-AB9A-16B2-C20F1E39A0F2"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

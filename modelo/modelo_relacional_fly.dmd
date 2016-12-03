@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="modelo_relacional_fly" id="D95C6263-BD0F-F2DB-D61F-3233B2AD3DB6" version="3.5">
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:25:16 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>D95C6263-BD0F-F2DB-D61F-3233B2AD3DB6</designId>
+</OSDM_Design>

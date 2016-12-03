@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<relationalModel class="oracle.dbtools.crest.model.design.relational.RelationalDesign" name="Relational_1" id="04C701E2-62FC-BD0A-C21B-2034B1D1D47B" mainViewID="3025492F-684A-50A4-6B7A-B816BE186945">
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:25:53 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+<selectedRDBMSSite>3FD120B5-9F4E-6278-D5E2-746D192C8319</selectedRDBMSSite>
+<importConnectionStamps>
+<importConnectionStamp class="oracle.dbtools.crest.imports.DBConnectionStamp">
+<connName>ISEP_SERVER</connName>
+<connUrl>jdbc:oracle:thin:@gandalf.dei.isep.ipp.pt:1521/pdborcl</connUrl>
+<connUser>BDDAD_2DK_6B</connUser>
+<connType>1</connType>
+</importConnectionStamp>
+</importConnectionStamps>
+</relationalModel>

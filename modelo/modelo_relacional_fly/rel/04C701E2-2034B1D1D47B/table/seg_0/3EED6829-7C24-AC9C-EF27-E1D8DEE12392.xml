@@ -1,0 +1,133 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="3EED6829-7C24-AC9C-EF27-E1D8DEE12392" schemaObject="F5EF44C9-14FC-38B5-6C4E-A07CACC361A5" name="TIPO_AVIAO">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>BDDAD_2DK_6B</sourceObjSchema>
+<sourceObjName>TIPO_AVIAO</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:08 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="MARCA_MODELO" id="6DDE456A-E48D-A559-0A08-913CBD2EC42D">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>TIPO_AVIAO</sourceObjSchema>
+<sourceObjName>MARCA_MODELO</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="9056CE7E-BD97-2831-F445-068D2B0AE11C" referredColumn="8D994F36-9F8B-3342-0129-BAE5E7CD3280"/>
+</associations>
+</Column>
+<Column name="VELOCIDADE_MAX" id="D4223D74-5766-BFC3-143D-1A19C5A0CCA3">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>TIPO_AVIAO</sourceObjSchema>
+<sourceObjName>VELOCIDADE_MAX</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CAPACIDADE_DEPOSITO" id="FB446803-5704-87A2-8969-B18BF6DAD94E">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>TIPO_AVIAO</sourceObjSchema>
+<sourceObjName>CAPACIDADE_DEPOSITO</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CARGA_MAX" id="FE136F4F-7EAA-5465-CB75-8D0861843C21">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>TIPO_AVIAO</sourceObjSchema>
+<sourceObjName>CARGA_MAX</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="HORAS_VOO_MIN" id="1CC40BF4-9FBC-A3E6-360F-D34BD73D9150">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>TIPO_AVIAO</sourceObjSchema>
+<sourceObjName>HORAS_VOO_MIN</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TOTAL_LUGARES" id="53E90606-7483-11DA-DDF4-67441B9174C8">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>TIPO_AVIAO</sourceObjSchema>
+<sourceObjName>TOTAL_LUGARES</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="89D3926F-FF2F-3AF8-B2C0-DFA6BAD9ADDE" schemaObject="F5EF44C9-14FC-38B5-6C4E-A07CACC361A5" name="TIPO_AVIAO_PK">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>BDDAD_2DK_6B</sourceObjSchema>
+<sourceObjName>SYS_C00941165</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:15 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6DDE456A-E48D-A559-0A08-913CBD2EC42D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="7C54333A-89DE-E531-4E63-81F955482A69" name="SYS_C00941166">
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:25 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6DDE456A-E48D-A559-0A08-913CBD2EC42D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

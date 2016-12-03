@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="A874E342-B1A8-36F5-10DA-1EC6FF2D447B" containerWithKeyObject="C1F916CF-2525-DA51-80A7-ED540A0ACF74" localFKIndex="D90720F6-926A-638D-A780-5F547EE8F0A1" name="SYS_C00941169">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>BDDAD_2DK_6B</sourceObjSchema>
+<sourceObjName>SYS_C00941169</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:25 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>78DC7E73-0EB5-CE57-8ABE-ABB9B5B8A138</referredTableID>
+<keyObject>E9D8C64E-9D9D-35EC-1697-AD73850F3F01</keyObject>
+<referredKeyID>E9D8C64E-9D9D-35EC-1697-AD73850F3F01</referredKeyID>
+<mandatory>true</mandatory>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

@@ -1,0 +1,158 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="715744D3-5A9F-AF7C-337A-CE602A13198F" schemaObject="F5EF44C9-14FC-38B5-6C4E-A07CACC361A5" name="VOO_REGULAR">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>BDDAD_2DK_6B</sourceObjSchema>
+<sourceObjName>VOO_REGULAR</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:08 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="VOO_REGULAR_ID" id="544B813E-75AA-B264-663F-F8EA21870FCF">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>VOO_REGULAR</sourceObjSchema>
+<sourceObjName>VOO_REGULAR_ID</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PLANO_ID" id="C15FFC1E-4CE5-D760-2F81-4C3C34365F58">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>VOO_REGULAR</sourceObjSchema>
+<sourceObjName>PLANO_ID</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="EDA599F0-DE31-A728-BFA3-B65F0488875C" referredColumn="FCDB8753-2B3D-F348-FB37-54EA381CF145"/>
+</associations>
+</Column>
+<Column name="VOO_ID" id="324CA4FB-CB2D-4A09-AB1F-E6D6DD159424">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>VOO_REGULAR</sourceObjSchema>
+<sourceObjName>VOO_ID</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="A465E3DD-1326-ECB1-2D8B-2A969C02FCA3" referredColumn="D2FBAC4C-918B-0DD0-4E29-73D7EE8C4C3B"/>
+</associations>
+</Column>
+<Column name="AVIAO" id="A75C388A-EF87-748C-CFF3-B64E23318FAD">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>VOO_REGULAR</sourceObjSchema>
+<sourceObjName>AVIAO</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>3 BYTE</dataTypeSize>
+<ownDataTypeParameters>3 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="669A2C01-AEB6-4E26-FA65-0ED9140450C6" referredColumn="26404E66-817B-E302-FEF2-47793DD0F6E5"/>
+</associations>
+</Column>
+<Column name="DIA_DA_SEMANA" id="7EB23F04-EA56-30CC-A1AA-2A07FD616697">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>VOO_REGULAR</sourceObjSchema>
+<sourceObjName>DIA_DA_SEMANA</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>1</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,1,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="HORARIO_PARTIDA" id="8B736182-3BFD-F72F-A172-67F8D6EE8F8E">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>VOO_REGULAR</sourceObjSchema>
+<sourceObjName>HORARIO_PARTIDA</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>5 BYTE</dataTypeSize>
+<ownDataTypeParameters>5 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="3D97BB46-B76A-5729-4C7B-CF10557FF8DD" schemaObject="F5EF44C9-14FC-38B5-6C4E-A07CACC361A5" name="VOO_REGULAR_PK">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>BDDAD_2DK_6B</sourceObjSchema>
+<sourceObjName>SYS_C00941238</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:15 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="544B813E-75AA-B264-663F-F8EA21870FCF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="653348C6-CD4B-20C2-3195-022588464631" name="SYS_C00941239">
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:26 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C15FFC1E-4CE5-D760-2F81-4C3C34365F58"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="ADD77A9C-14D2-6B42-333A-3F2F646001A1" name="SYS_C00941240">
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:26 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="324CA4FB-CB2D-4A09-AB1F-E6D6DD159424"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="936BBB1A-AC27-0392-49C4-DC80ABAC97BD" name="SYS_C00941241">
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:26 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A75C388A-EF87-748C-CFF3-B64E23318FAD"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,116 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="AFAD10A1-7A60-FFD4-2ABA-5657113B616D" schemaObject="F5EF44C9-14FC-38B5-6C4E-A07CACC361A5" name="HORAS_VOO">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>BDDAD_2DK_6B</sourceObjSchema>
+<sourceObjName>HORAS_VOO</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:07 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="PILOTO_ID" id="C35E909C-90A5-CA64-23C6-62FC9C216ECC">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>HORAS_VOO</sourceObjSchema>
+<sourceObjName>PILOTO_ID</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="85D8DE5F-498A-BA92-D98F-A4BE3521B3A9" referredColumn="2D4F72AD-24F4-EE57-DD20-6CBC4FE42554"/>
+</associations>
+</Column>
+<Column name="MARCA_MODELO" id="59875CFE-C484-C162-587D-61B97C00F4ED">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>HORAS_VOO</sourceObjSchema>
+<sourceObjName>MARCA_MODELO</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="C42EE4D8-A415-DBEC-A1C7-03C7B802F0CA" referredColumn="6DDE456A-E48D-A559-0A08-913CBD2EC42D"/>
+</associations>
+</Column>
+<Column name="HORAS_VOO" id="FAF91CCD-FA98-0DEC-D2C0-8B2518BE24BB">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>HORAS_VOO</sourceObjSchema>
+<sourceObjName>HORAS_VOO</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="5F0FE9BF-C625-A68B-1D41-4F04CF4A40F5" name="PK_HORAS_VOO">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>BDDAD_2DK_6B</sourceObjSchema>
+<sourceObjName>PK_HORAS_VOO</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:21 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C35E909C-90A5-CA64-23C6-62FC9C216ECC"/>
+<colUsage columnID="59875CFE-C484-C162-587D-61B97C00F4ED"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="F8A97FBA-BA91-113D-3086-966EA7FAAF07" schemaObject="F5EF44C9-14FC-38B5-6C4E-A07CACC361A5" name="PK_HORAS_VOO">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>BDDAD_2DK_6B</sourceObjSchema>
+<sourceObjName>PK_HORAS_VOO</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:15 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C35E909C-90A5-CA64-23C6-62FC9C216ECC"/>
+<colUsage columnID="59875CFE-C484-C162-587D-61B97C00F4ED"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="58E7D2D9-93B7-4A2E-EC40-1D480404EE0D" name="FK_HORAS_VOO">
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:25 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="59875CFE-C484-C162-587D-61B97C00F4ED"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="433B9589-7DB8-9E83-AF98-19DA7B5AAD33" name="SYS_C00941187">
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:25 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C35E909C-90A5-CA64-23C6-62FC9C216ECC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

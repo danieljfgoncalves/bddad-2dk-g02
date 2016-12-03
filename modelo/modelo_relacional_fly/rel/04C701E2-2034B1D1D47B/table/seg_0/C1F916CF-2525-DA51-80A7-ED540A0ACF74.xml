@@ -1,0 +1,72 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="C1F916CF-2525-DA51-80A7-ED540A0ACF74" schemaObject="F5EF44C9-14FC-38B5-6C4E-A07CACC361A5" name="AVIAO">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>BDDAD_2DK_6B</sourceObjSchema>
+<sourceObjName>AVIAO</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:07 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="NUM_SERIE" id="26404E66-817B-E302-FEF2-47793DD0F6E5">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>AVIAO</sourceObjSchema>
+<sourceObjName>NUM_SERIE</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>3 BYTE</dataTypeSize>
+<ownDataTypeParameters>3 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="MARCA_MODELO" id="CD7DDB6B-559F-52D8-E195-6AF7FCDFDBB8">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>AVIAO</sourceObjSchema>
+<sourceObjName>MARCA_MODELO</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:10 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="A874E342-B1A8-36F5-10DA-1EC6FF2D447B" referredColumn="8D994F36-9F8B-3342-0129-BAE5E7CD3280"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="C16C23FA-B6FC-39AF-388E-C2D795DED311" schemaObject="F5EF44C9-14FC-38B5-6C4E-A07CACC361A5" name="AVIAO_PK">
+<sourceConnName>ISEP_SERVER</sourceConnName>
+<sourceObjSchema>BDDAD_2DK_6B</sourceObjSchema>
+<sourceObjName>SYS_C00941168</sourceObjName>
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:15 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="26404E66-817B-E302-FEF2-47793DD0F6E5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D90720F6-926A-638D-A780-5F547EE8F0A1" name="SYS_C00941169">
+<createdBy>IvoFerro</createdBy>
+<createdTime>2016-12-03 13:26:25 UTC</createdTime>
+<ownerDesignName>modelo_relacional_fly</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CD7DDB6B-559F-52D8-E195-6AF7FCDFDBB8"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
