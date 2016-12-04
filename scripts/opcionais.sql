@@ -1,4 +1,4 @@
--- ##################### FUNÇÕES #####################
+-- ##################### FUNCOES #####################
 
 -- 12.
 -- Funcao que para uma dada reserva de uma viagem ja registada na BD devolva
@@ -60,9 +60,9 @@ END;
 
 
 -- 13.
--- Função que dado um aeroporto origem e um aeroporto destino devolva o número mínimo de voos de ligação 
--- requeridos para ir de um aeroporto para o outro. No caso de haver ligação direta o valor é 1 
--- e no caso de não haver rota possível o valor é 0. 
+-- Funcao que dado um aeroporto origem e um aeroporto destino devolva o numero minimo de voos de ligacao 
+-- requeridos para ir de um aeroporto para o outro. No caso de haver ligacao direta o valor e 1 
+-- e no caso de nao haver rota possivel o valor e 0. 
 CREATE OR REPLACE FUNCTION FC_NUM_VOOS_MIN 
   (A_ORIGEM_PARAM IN VARCHAR, A_DESTINO_PARAM IN VARCHAR)
   RETURN INTEGER 
@@ -128,7 +128,7 @@ BEGIN
   RETURN NUM_VOOS_MIN;
 EXCEPTION
   WHEN NO_DATA_FOUND THEN
-    DBMS_OUTPUT.PUT_LINE('Não existem rotas planeadas '||SYSDATE);
+    DBMS_OUTPUT.PUT_LINE('Nao existem rotas planeadas '||SYSDATE);
     RETURN NULL;
   WHEN TOO_MANY_ROWS THEN
     DBMS_OUTPUT.PUT_LINE('Existe alguma rota malformada '||SYSDATE);
@@ -142,10 +142,10 @@ END FC_NUM_VOOS_MIN;
 -- ##################### PROCEDIMENTOS #####################
 
 -- 14.
--- Procedimento que permita listar as rotas de voos possi�?veis entre um dado aeroporto origem e um aeroporto destino, 
--- indicando para cada voo de ligação, a Ordem de sequência na viagem, os aeroportos envolvidos, 
--- o tipo de voo (Dome�?stico/Europa) e a distância . 
--- Rota |  ordem  |  NumVoo |  de |  para |  tipo(D/E) |    distância 
+-- Procedimento que permita listar as rotas de voos possiveis entre um dado aeroporto origem e um aeroporto destino, 
+-- indicando para cada voo de ligacao, a Ordem de sequencia na viagem, os aeroportos envolvidos, 
+-- o tipo de voo (Domestico/Europa) e a distancia . 
+-- Rota |  ordem  |  NumVoo |  de |  para |  tipo(D/E) |    distancia 
 -- PARAMS: AEROPORTO_ORIGEM e AEROPORTO_DESTINO
 CREATE OR REPLACE PROCEDURE PC_LISTAR_ROTA(A_ORIGEM_PARAM IN VARCHAR, A_DESTINO_PARAM IN VARCHAR)
 IS
@@ -162,7 +162,7 @@ IS
   TMP_NUM_VOOS INTEGER;
 BEGIN
   -- Imprimir cabecalho
-  DBMS_OUTPUT.PUT_LINE('| Rota  | Ordem | NumVoo  | de  | para  |   tipo(D/E)    | distância |');
+  DBMS_OUTPUT.PUT_LINE('| Rota  | Ordem | NumVoo  | de  | para  |   tipo(D/E)    | distancia |');
   
   -- Iterar as rotas
   FOR ROTA_REC IN (
@@ -217,7 +217,7 @@ BEGIN
         -- Alterar aeroporto intermedio para o destino do vou anterior
         AERO_INTERMEDIO := TMP_PARA;
         -- Imprimir linha
-        DBMS_OUTPUT.PUT_LINE('| ' || ROTA_REC.ROTA_ID || '     |   ' || i || 'º  | ' ||
+        DBMS_OUTPUT.PUT_LINE('| ' || ROTA_REC.ROTA_ID || '     |   ' || i || '.o  | ' ||
           TMP_VOO_ID || '       | ' || TMP_DE || ' | ' || TMP_PARA || '   |   ' || TMP_CAT || '     | ' || TMP_DISTANCIA || '    |');
       
       END LOOP;
@@ -226,7 +226,7 @@ BEGIN
 
 EXCEPTION
   WHEN NO_DATA_FOUND THEN
-    DBMS_OUTPUT.PUT_LINE('Não existem rotas planeadas '||SYSDATE);
+    DBMS_OUTPUT.PUT_LINE('Nao existem rotas planeadas '||SYSDATE);
   WHEN TOO_MANY_ROWS THEN
     DBMS_OUTPUT.PUT_LINE('Existe alguma rota malformada '||SYSDATE);
   WHEN OTHERS THEN
@@ -237,8 +237,8 @@ END PC_LISTAR_ROTA;
 
 -- 15.
 -- Procedimento que permita obter todos os voos regulares entre duas cidades
--- em que há voo de regresso no mesmo dia, com uma hora de ida inferior às 10
--- da manhã e com uma diferença entre a hora de partida do voo de regresso e a
+-- em que ha voo de regresso no mesmo dia, com uma hora de ida inferior as 10
+-- da manha e com uma diferenca entre a hora de partida do voo de regresso e a
 -- hora de chegada do voo de ida superior a 8 horas.
 CREATE OR REPLACE PROCEDURE PC_OBTER_LIGACAO (CIDADE_ID_1 NUMBER, CIDADE_ID_2 NUMBER)
 IS

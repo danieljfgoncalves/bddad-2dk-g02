@@ -47,7 +47,7 @@ END TG_VERIFICAR_PILOTO_ALOCADO;
 -- de voos com inicio no mesmo dia for superior a 2 ou, no caso da 2ª viagem do
 -- dia, o aeroporto de partida for diferente do da chegada da 1ª viagem.
 
--- Trigger 11 para os tripulantes técnicos
+-- Trigger 11 para os tripulantes tecnicos
 CREATE OR REPLACE TRIGGER TG_ALOCACAO_TRIPULANTE_TECNICO
 BEFORE INSERT OR UPDATE ON TRIPULANTE_TECNICO
 FOR EACH ROW

@@ -1,8 +1,8 @@
 -- 7.
--- Procedimento que permita obter as viagens que ainda não foram realizadas e
--- que ainda têm lugares por reservar, indicando o código do voo, a data, a hora, o
--- aeroporto origem, o aeroporto destino e o número de lugares disponíveis na
--- classe económica e na executiva.
+-- Procedimento que permita obter as viagens que ainda nao foram realizadas e
+-- que ainda tem lugares por reservar, indicando o codigo do voo, a data, a hora, o
+-- aeroporto origem, o aeroporto destino e o nuero de lugares disponiveis na
+-- classe economica e na executiva.
 CREATE OR REPLACE PROCEDURE PC_VIAGENS_DISPONIVEIS IS
   L_VOO VOO%ROWTYPE;
   L_MARCA_MODELO NUMBER;
@@ -18,7 +18,7 @@ BEGIN
 
   FOR VNR IN VIAGENS_NAO_REALIZADAS
   LOOP
-    -- Obter o voo da viagem_planeada em questão
+    -- Obter o voo da viagem_planeada em questao
     SELECT V.* INTO L_VOO FROM VOO V, VOO_REGULAR VR
     WHERE V.VOO_ID = VR.VOO_ID AND VR.VOO_REGULAR_ID = VNR.VOO_REGULAR;
     
@@ -77,9 +77,9 @@ END;
 
 -- Procedures
 -- 8. 
--- Procedimento que atribua um avião e a tripulação a cada voo regular definido para um peri�?odo. 
--- Considere que a tripulação e o avião são sempre os mesmos para todas as viagens que se realizam 
--- nesse peri�?odo correspondentes ao mesmo voo_regular.
+-- Procedimento que atribua um aviao e a tripulacao a cada voo regular definido para um periodo. 
+-- Considere que a tripulacao e o aviao sao sempre os mesmos para todas as viagens que se realizam 
+-- nesse periodo correspondentes ao mesmo voo_regular.
 -- PARAMS: PLANO_ID
 CREATE OR REPLACE PROCEDURE PC_ATRIBUIR_AVIAO_TRIPULACAO(PLANO_PARAM IN INTEGER)
 IS
@@ -96,7 +96,7 @@ IS
               FROM VOO_REGULAR
               WHERE PLANO_ID = PLANO_PARAM
               FOR UPDATE;
-  -- Função local para ver se existe algum tripulante disponivel para alocar
+  -- Funcao local para ver se existe algum tripulante disponivel para alocar
   FUNCTION FC_PODE_ALOCAR_TRIP 
     (VP_PARAM IN INTEGER, CAT_PARAM IN INTEGER)
     RETURN INTEGER 
@@ -127,7 +127,7 @@ IS
     RETURN NULL; -- Nao existe nenhum tripulante disponivel 
   EXCEPTION
     WHEN NO_DATA_FOUND THEN
-      DBMS_OUTPUT.PUT_LINE('Não existem tripulantes com categoria #'|| CAT_PARAM || ' registados '||SYSDATE);
+      DBMS_OUTPUT.PUT_LINE('Nao existem tripulantes com categoria #'|| CAT_PARAM || ' registados '||SYSDATE);
       RETURN NULL;
     WHEN OTHERS THEN
       DBMS_OUTPUT.PUT_LINE('Ocorreu um erro '||SYSDATE);
@@ -187,7 +187,7 @@ BEGIN
       --ATRIBUIR COMISSARIO CHEFE
       TMP_TRIP_TEC_ID := FC_PODE_ALOCAR_TRIP(VP_REC.VIAGEM_PLANEADA_ID, 2);
       INSERT INTO TRIPULANTE_CABINE VALUES (VP_REC.VIAGEM_PLANEADA_ID, TMP_TRIP_TEC_ID, 'COMISSARIO CHEFE');
-      -- ATRIBUIR RESTANTES COMISSÃ?RIOS
+      -- ATRIBUIR RESTANTES COMISSARIOS
       FOR i IN 1..(TMP_NUM_COMISSARIOS - 1)
       LOOP
         TMP_TRIP_TEC_ID := FC_PODE_ALOCAR_TRIP(VP_REC.VIAGEM_PLANEADA_ID, 2);
@@ -197,7 +197,7 @@ BEGIN
   END LOOP;
 EXCEPTION
   WHEN TRIPULANTES_INSUF THEN
-    DBMS_OUTPUT.PUT_LINE('Não existem tripulantes suficientes para alocar '||SYSDATE);
+    DBMS_OUTPUT.PUT_LINE('Nao existem tripulantes suficientes para alocar '||SYSDATE);
   WHEN NO_DATA_FOUND THEN
     DBMS_OUTPUT.PUT_LINE('Registo inexistente '||SYSDATE);
   WHEN TOO_MANY_ROWS THEN
@@ -209,9 +209,9 @@ END PC_ATRIBUIR_AVIAO_TRIPULACAO;
 
 
 -- 9. 
--- Procedimento que para um determinado período (datainicio/data fim), crie as
--- viagens dos voos que se devem realizar durante esse período. Considera-se que
--- já foram criados os voos regulares a efetuar nesse período.
+-- Procedimento que para um determinado periodo (datainicio/data fim), crie as
+-- viagens dos voos que se devem realizar durante esse periodo. Considera-se que
+-- ja foram criados os voos regulares a efetuar nesse periodo.
 CREATE OR REPLACE PROCEDURE PC_CRIAR_VIAGENS
   (DATA_INICIO_PERIODO IN DATE, DATA_FIM_PERIODO IN DATE)
 IS
@@ -224,15 +224,15 @@ IS
   PERIODO_INVALIDO EXCEPTION;
 BEGIN
 
-  -- Obter o ID máximo da tabela viagem planeada
+  -- Obter o ID maximo da tabela viagem planeada
   SELECT MAX(VIAGEM_PLANEADA_ID) INTO ID_PARA_INSERIR FROM VIAGEM_PLANEADA;
 
-  -- Verificar se plano é válido (caso não seja lança a exceção)
+  -- Verificar se plano e valido (caso nao seja lanca a excecao)
   IF DATA_INICIO_PERIODO >= DATA_FIM_PERIODO THEN
     RAISE PERIODO_INVALIDO;
   END IF;
 
-  -- Obter plano em questão
+  -- Obter plano em questao
   SELECT * INTO PLANO_EM_QUESTAO FROM PLANO P
   WHERE TRUNC(P.DATA_INICIO) = TRUNC(DATA_INICIO_PERIODO)
   AND TRUNC(P.DATA_FIM) = TRUNC(DATA_FIM_PERIODO);
@@ -242,11 +242,11 @@ BEGIN
   (SELECT * FROM VOO_REGULAR VR WHERE VR.PLANO_ID = PLANO_EM_QUESTAO.PLANO_ID )
   LOOP
   
-    -- Para cada voo regular percorrer as datas todas do plano para criar os voos necessários
+    -- Para cada voo regular percorrer as datas todas do plano para criar os voos necessarios
     DATA_CONTADOR := DATA_INICIO_PERIODO;
     WHILE DATA_CONTADOR < DATA_FIM_PERIODO LOOP
       
-      -- Verificar se a data do contador corresponde ao dia da semana do voo regular em questão
+      -- Verificar se a data do contador corresponde ao dia da semana do voo regular em questao
       IF TO_CHAR(DATA_CONTADOR, 'D') = TO_CHAR(VOO_REGULAR_RECORD.DIA_DA_SEMANA) THEN
         
         -- Incrementar id a inserir
