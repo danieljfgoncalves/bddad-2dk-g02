@@ -420,7 +420,7 @@ END;
 -- *** (Trigger resolvido no exercicio 10)
 
 -- R16: A combinação do tipo de documento com o número do documento no passageiro, tem de ser única.
-ALTER TABLE PASSAGEIRO ADD CONSTRAINT UNIQE_DOCUMENTO UNIQUE (TIPO_DOCUMENTO, NUM_DOCUMENTO);
+ALTER TABLE PASSAGEIRO ADD CONSTRAINT U_R16_DOCUMENTO UNIQUE (TIPO_DOCUMENTO, NUM_DOCUMENTO);
 
 -- ### Inserir dados nas tabelas ###
 
