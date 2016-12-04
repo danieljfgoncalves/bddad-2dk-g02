@@ -2,7 +2,7 @@
 
 -- 1.
 -- View que permita obter os pilotos que mais horas fizeram de voo por tipo de
--- avi�o (tipo avi�o, c�digo piloto, nome, n�mero horas)
+-- aviao (tipo aviao, codigo piloto, nome, numero horas)
 CREATE OR REPLACE VIEW VW_HORAS_VOO_POR_AVIAO AS
 
 SELECT Ma.NOME marca, MM.NOME modelo, HV.PILOTO_ID id_piloto, T.NOME nome_piloto, HV.HORAS_VOO horas_voo
@@ -21,8 +21,8 @@ WHERE HV.PILOTO_ID = T.TRIPULANTE_ID
 
 -- 2.
 -- View que permita obter todos os voos regulares que se realizam 
--- entre duas cidades para as quais h� liga��es todos os dias da 
--- semana (cidade origem, cidade destino, dia semana, hor�rio).
+-- entre duas cidades para as quais ha ligacoes todos os dias da 
+-- semana (cidade origem, cidade destino, dia semana, horario).
 CREATE OR REPLACE VIEW VW_VOOS_TD_SEMANA AS
 
 SELECT  CO.NOME ORIGEM, CD.NOME DESTINO, VR.DIA_DA_SEMANA, VR.HORARIO_PARTIDA
@@ -42,7 +42,7 @@ WHERE   VR.VOO_ID = V.VOO_ID
 ORDER BY DIA_DA_SEMANA;
 
 -- 3.
--- View que para cada voo de liga��o indique a viagem com maior atraso (c�digo
+-- View que para cada voo de ligacao indique a viagem com maior atraso (codigo
 -- voo_regular, data, aeroporto origem, aeroporto destino, tempo de atraso).
 CREATE OR REPLACE VIEW VW_VIAGENS_MAIOR_ATRASO AS
 
