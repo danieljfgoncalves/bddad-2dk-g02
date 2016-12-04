@@ -80,7 +80,7 @@ END;
 -- Procedimento que atribua um avião e a tripulação a cada voo regular definido para um período. 
 -- Considere que a tripulação e o avião são sempre os mesmos para todas as viagens que se realizam 
 -- nesse período correspondentes ao mesmo voo_regular.
--- PARAMS: PLANO
+-- PARAMS: PLANO_ID
 CREATE OR REPLACE PROCEDURE FC_ATRIBUIR_AVIAO_TRIPULACAO(PLANO_PARAM IN INTEGER)
 IS
   --EXCEPCOES PERSONALIZADAS
