@@ -1,8 +1,8 @@
 -- 7.
--- Procedimento que permita obter as viagens que ainda n�o foram realizadas e
--- que ainda t�m lugares por reservar, indicando o c�digo do voo, a data, a hora, o
--- aeroporto origem, o aeroporto destino e o n�mero de lugares dispon�veis na
--- classe econ�mica e na executiva.
+-- Procedimento que permita obter as viagens que ainda não foram realizadas e
+-- que ainda têm lugares por reservar, indicando o código do voo, a data, a hora, o
+-- aeroporto origem, o aeroporto destino e o número de lugares disponíveis na
+-- classe económica e na executiva.
 CREATE OR REPLACE PROCEDURE PC_VIAGENS_DISPONIVEIS IS
   L_VOO VOO%ROWTYPE;
   L_MARCA_MODELO NUMBER;
@@ -18,7 +18,7 @@ BEGIN
 
   FOR VNR IN VIAGENS_NAO_REALIZADAS
   LOOP
-    -- Obter o voo da viagem_planeada em quest�o
+    -- Obter o voo da viagem_planeada em questão
     SELECT V.* INTO L_VOO FROM VOO V, VOO_REGULAR VR
     WHERE V.VOO_ID = VR.VOO_ID AND VR.VOO_REGULAR_ID = VNR.VOO_REGULAR;
     
@@ -77,147 +77,141 @@ END;
 
 -- Procedures
 -- 8. 
--- Procedimento que atribua um avião e a tripulação a cada voo regular para um peri�?odo. 
--- Considere que a tripulação e o avião são sempre os mesmos para todas as viagens que 
--- se realizam nesse peri�?odo correspondentes ao mesmo voo_regular.
--- PARAMS: PLANO
-CREATE OR REPLACE PROCEDURE ATRIBUIR_AVIAO_TRIPULACAO(PLANO_PARAM IN INTEGER)
+-- Procedimento que atribua um avião e a tripulação a cada voo regular definido para um período. 
+-- Considere que a tripulação e o avião são sempre os mesmos para todas as viagens que se realizam 
+-- nesse período correspondentes ao mesmo voo_regular.
+-- PARAMS: PLANO_ID
+CREATE OR REPLACE PROCEDURE FC_ATRIBUIR_AVIAO_TRIPULACAO(PLANO_PARAM IN INTEGER)
 IS
-
-CAB_ROWS INTEGER; -- Número de comissários registados
-CAB_EXISTENTE INTEGER; -- boolean se o comissário já foi atribuido ao voo em questão
-TMP_NUM_COMISSARIOS INTEGER;-- número de comissários necessários para cada voo (var tmp)
-TMP_PILOTO_ID INTEGER; -- id de piloto (var tmp)
-TMP_CO_PILOTO_ID INTEGER; -- id de co-piloto (var tmp)
-TMP_COMISSARIO_ID INTEGER; -- id de comissário (var tmp)
-V_VR_AVIAO VARCHAR(3); -- número de serie de avião (var tmp)
-CURSOR C_VR IS 
-            SELECT * 
-            FROM VOO_REGULAR
-            WHERE PLANO_ID = PLANO_PARAM
-            FOR UPDATE;
-CURSOR C_AVIAO IS
-               SELECT NUM_SERIE
-               FROM AVIAO
-               ORDER BY dbms_random.value;
-CURSOR C_TRIP_TEC IS
-                  SELECT TRIPULANTE_ID
-                  FROM TRIPULANTE
-                  WHERE CATEGORIA = 1
-                  ORDER BY dbms_random.value;
-CURSOR C_TRIP_CAB IS
-                  SELECT TRIPULANTE_ID
-                  FROM TRIPULANTE
-                  WHERE CATEGORIA = 2
-                  ORDER BY dbms_random.value; 
+  --EXCEPCOES PERSONALIZADAS
+  TRIPULANTES_INSUF EXCEPTION;
+  -- VARS
+  NUM_T_CAB INTEGER; -- Numero de tripulantes cabine registados
+  NUM_T_TEC INTEGER; -- Numero de tripulantes tecnicos registados
+  TMP_NUM_COMISSARIOS INTEGER;-- numero de comissarios necessarios para cada voo (var tmp)
+  V_VR_AVIAO VARCHAR(3); -- numero de serie de aviao (var tmp)
+  TMP_TRIP_TEC_ID INTEGER;
+  CURSOR C_VR IS 
+              SELECT VOO_REGULAR_ID 
+              FROM VOO_REGULAR
+              WHERE PLANO_ID = PLANO_PARAM
+              FOR UPDATE;
+  -- Função local para ver se existe algum tripulante disponivel para alocar
+  FUNCTION FC_PODE_ALOCAR_TRIP 
+    (VP_PARAM IN INTEGER, CAT_PARAM IN INTEGER)
+    RETURN INTEGER 
+  IS
+    TRIP_ID INTEGER;
+    TRIP_JA_ALOCADO INTEGER;
+  BEGIN
+    FOR TRIP_REC IN (SELECT TRIPULANTE.TRIPULANTE_ID 
+                    FROM TRIPULANTE
+                    WHERE CATEGORIA = CAT_PARAM
+                    ORDER BY dbms_random.value)
+    LOOP
+      SELECT COUNT(*)
+      INTO TRIP_JA_ALOCADO
+      FROM (SELECT TC.TRIPULANTE
+            FROM TRIPULANTE_CABINE TC
+            WHERE TC.VIAGEM_PLANEADA = VP_PARAM
+            UNION ALL
+            SELECT TT.TRIPULANTE
+            FROM TRIPULANTE_TECNICO TT
+            WHERE TT.VIAGEM_PLANEADA = VP_PARAM)SUBQ
+      WHERE TRIPULANTE = TRIP_REC.TRIPULANTE_ID;
+      IF (TRIP_JA_ALOCADO = 0)
+      THEN
+        RETURN TRIP_REC.TRIPULANTE_ID;
+      END IF;
+    END LOOP;
+    RETURN NULL; -- Nao existe nenhum tripulante disponivel 
+  EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+      DBMS_OUTPUT.PUT_LINE('Não existem tripulantes com categoria #'|| CAT_PARAM || ' registados '||SYSDATE);
+      RETURN NULL;
+    WHEN OTHERS THEN
+      DBMS_OUTPUT.PUT_LINE('Ocorreu um erro '||SYSDATE);
+      RETURN NULL;
+  END;
 BEGIN
-
-  -- Verificar quantos commisários estão registados na BD
+  -- Verificar quantos tripulante de cabine estao registados na BD
   SELECT COUNT(*)
-  INTO CAB_ROWS
+  INTO NUM_T_CAB
   FROM TRIPULANTE
   WHERE CATEGORIA = 2;
+  -- Verificar quantos tripulante de tecnicos estao registados na BD
+  SELECT COUNT(*)
+  INTO NUM_T_TEC
+  FROM TRIPULANTE
+  WHERE CATEGORIA = 1;
 
-  OPEN C_AVIAO;
-  OPEN C_TRIP_TEC;
-  OPEN C_TRIP_CAB;
   FOR VR_REC IN C_VR -- Iterar pelos voo regulares com o mesmo plano 
   LOOP
     -- ATRIBUIR UM AVIAO A CADA VOO_REGULAR
-    FETCH C_AVIAO INTO V_VR_AVIAO; 
-    IF (C_AVIAO%NOTFOUND)
-    THEN -- Reset ao C_AVIAO
-      CLOSE C_AVIAO;
-      OPEN C_AVIAO;
-    END IF;
+    V_VR_AVIAO := FC_PODE_ALOCAR_AVIAO(VR_REC.VOO_REGULAR_ID);
+    -- Atualizar o aviao no voo regular em questao
     UPDATE VOO_REGULAR -- Atualizar coluna aviao
     SET    AVIAO = V_VR_AVIAO
     WHERE  CURRENT OF C_VR;
     
+    -- Obter numero de comissarios necessarios para este voo regular
+    SELECT CAT.NUM_TRIP_CABINE 
+    INTO TMP_NUM_COMISSARIOS
+    FROM VOO_REGULAR VR, VOO, CATEGORIA_VOO CAT
+    WHERE VR.VOO_ID = VOO.VOO_ID 
+    AND VOO.CAT_VOO_ID = CAT.CAT_VOO_ID
+    AND VR.VOO_REGULAR_ID = VR_REC.VOO_REGULAR_ID;
     
--- *** TODO: Adaptar Função 3 a atribuição de um avião ***
-
-
-    -- Obter número de comissários necessários
-    SELECT CAT.NUM_TRIP_CABINE INTO TMP_NUM_COMISSARIOS
-      FROM VOO_REGULAR VR, VOO, CATEGORIA_VOO CAT
-      WHERE VR.VOO_ID = VOO.VOO_ID AND VOO.CAT_VOO_ID = CAT.CAT_VOO_ID
-      AND VR.VOO_REGULAR_ID = VR_REC.VOO_REGULAR_ID;
-  
-    -- LOOP VIAGENS PLANEADAS
-    FOR VP_REC IN (SELECT *
+    -- Iterar por viagens planeadas do voo regular em questão
+    FOR VP_REC IN ( SELECT VP.VIAGEM_PLANEADA_ID
                     FROM VIAGEM_PLANEADA VP
                     WHERE VP.VOO_REGULAR = VR_REC.VOO_REGULAR_ID)
     LOOP
-      -- ATRIBUIR PILOTO
-      FETCH C_TRIP_TEC INTO TMP_PILOTO_ID;
-      IF (C_TRIP_TEC%NOTFOUND)
-      THEN -- Reset ao C_TRIP_TEC
-        CLOSE C_TRIP_TEC;
-        OPEN C_TRIP_TEC;
-      END IF;
-      FETCH C_TRIP_TEC INTO TMP_CO_PILOTO_ID;
-      IF (C_TRIP_TEC%NOTFOUND)
-      THEN -- Reset ao C_TRIP_TEC
-        CLOSE C_TRIP_TEC;
-        OPEN C_TRIP_TEC;
-      END IF;
-      INSERT INTO TRIPULANTE_TECNICO VALUES (VP_REC.VIAGEM_PLANEADA_ID, TMP_PILOTO_ID, 'PILOTO');
-      INSERT INTO TRIPULANTE_TECNICO VALUES (VP_REC.VIAGEM_PLANEADA_ID, TMP_CO_PILOTO_ID, 'CO-PILOTO');
-      
-      -- ATRIBUIR COMISSARIO CHEFE
-      FETCH C_TRIP_CAB INTO TMP_COMISSARIO_ID;
-      IF (C_TRIP_CAB%NOTFOUND)
-      THEN -- Reset ao C_TRIP_CAB
-        CLOSE C_TRIP_CAB;
-        OPEN C_TRIP_CAB;
-      END IF;
-      INSERT INTO TRIPULANTE_CABINE VALUES (VP_REC.VIAGEM_PLANEADA_ID, TMP_COMISSARIO_ID, 'COMISSARIO_CHEFE');
-      
-      -- Sai do loop caso não haja commissarios suficientes
-      IF (CAB_ROWS < TMP_NUM_COMISSARIOS)
+    -- ATRIBUIR PILOTO E CO-PILOTO
+      IF (NUM_T_TEC < 2)
       THEN
-        EXIT;
+        RAISE TRIPULANTES_INSUF;
       END IF;
-      -- ATRIBUIR RESTANTES COMISS�?RIOS
+      --ATRIBUIR PILOTO
+      TMP_TRIP_TEC_ID := FC_PODE_ALOCAR_TRIP(VP_REC.VIAGEM_PLANEADA_ID, 1);
+      INSERT INTO TRIPULANTE_TECNICO VALUES (VP_REC.VIAGEM_PLANEADA_ID, TMP_TRIP_TEC_ID, 'PILOTO');
+      --ATRIBUIR CO-PILOTO
+      TMP_TRIP_TEC_ID := FC_PODE_ALOCAR_TRIP(VP_REC.VIAGEM_PLANEADA_ID, 1);
+      INSERT INTO TRIPULANTE_TECNICO VALUES (VP_REC.VIAGEM_PLANEADA_ID, TMP_TRIP_TEC_ID, 'CO-PILOTO');
+      
+    -- ATRIBUIR COMISSARIOS
+      IF (NUM_T_CAB < TMP_NUM_COMISSARIOS)
+      THEN
+        RAISE TRIPULANTES_INSUF;
+      END IF;
+      --ATRIBUIR COMISSARIO CHEFE
+      TMP_TRIP_TEC_ID := FC_PODE_ALOCAR_TRIP(VP_REC.VIAGEM_PLANEADA_ID, 2);
+      INSERT INTO TRIPULANTE_CABINE VALUES (VP_REC.VIAGEM_PLANEADA_ID, TMP_TRIP_TEC_ID, 'COMISSARIO CHEFE');
+      -- ATRIBUIR RESTANTES COMISSÃ?RIOS
       FOR i IN 1..(TMP_NUM_COMISSARIOS - 1)
       LOOP
-        FETCH C_TRIP_CAB INTO TMP_COMISSARIO_ID;
-        IF (C_TRIP_CAB%NOTFOUND)
-        THEN -- Reset ao C_TRIP_CAB
-          CLOSE C_TRIP_CAB;
-          OPEN C_TRIP_CAB;
-        END IF;
-        LOOP -- SE O COMISSARIO J�? FIZER PARTE DESTE VOO, TENTAR O SEGUINTE
-          SELECT COUNT(*)
-          INTO CAB_EXISTENTE
-          FROM TRIPULANTE_CABINE TC
-          WHERE TC.VIAGEM_PLANEADA = VP_REC.VIAGEM_PLANEADA_ID
-          AND TC.TRIPULANTE = TMP_COMISSARIO_ID;
-        EXIT WHEN  CAB_EXISTENTE < 1; 
-          FETCH C_TRIP_CAB INTO TMP_COMISSARIO_ID;
-          IF (C_TRIP_CAB%NOTFOUND)
-          THEN -- Reset ao C_TRIP_CAB
-            CLOSE C_TRIP_CAB;
-            OPEN C_TRIP_CAB;
-          END IF;
-        END LOOP;
-        INSERT INTO TRIPULANTE_CABINE VALUES (VP_REC.VIAGEM_PLANEADA_ID, TMP_COMISSARIO_ID, 'COMISSARIO');
+        TMP_TRIP_TEC_ID := FC_PODE_ALOCAR_TRIP(VP_REC.VIAGEM_PLANEADA_ID, 2);
+        INSERT INTO TRIPULANTE_CABINE VALUES (VP_REC.VIAGEM_PLANEADA_ID, TMP_TRIP_TEC_ID, 'COMISSARIO');
       END LOOP;
     END LOOP;
-  
   END LOOP;
-  CLOSE C_AVIAO;
-  CLOSE C_TRIP_TEC;
-  CLOSE C_TRIP_CAB;
-END;
+EXCEPTION
+  WHEN TRIPULANTES_INSUF THEN
+    DBMS_OUTPUT.PUT_LINE('Não existem tripulantes suficientes para alocar '||SYSDATE);
+  WHEN NO_DATA_FOUND THEN
+    DBMS_OUTPUT.PUT_LINE('Registo inexistente '||SYSDATE);
+  WHEN TOO_MANY_ROWS THEN
+    DBMS_OUTPUT.PUT_LINE('Muitos registos '||SYSDATE);
+  WHEN OTHERS THEN
+    DBMS_OUTPUT.PUT_LINE('Ocorreu um erro '||SYSDATE);
+END FC_ATRIBUIR_AVIAO_TRIPULACAO;
 /
 
 
 -- 9. 
--- Procedimento que para um determinado per�odo (datainicio/data fim), crie as
--- viagens dos voos que se devem realizar durante esse per�odo. Considera-se que
--- j� foram criados os voos regulares a efetuar nesse per�odo.
+-- Procedimento que para um determinado período (datainicio/data fim), crie as
+-- viagens dos voos que se devem realizar durante esse período. Considera-se que
+-- já foram criados os voos regulares a efetuar nesse período.
 CREATE OR REPLACE PROCEDURE PC_CRIAR_VIAGENS
   (DATA_INICIO_PERIODO IN DATE, DATA_FIM_PERIODO IN DATE)
 IS
@@ -230,15 +224,15 @@ IS
   PERIODO_INVALIDO EXCEPTION;
 BEGIN
 
-  -- Obter o ID m�ximo da tabela viagem planeada
+  -- Obter o ID máximo da tabela viagem planeada
   SELECT MAX(VIAGEM_PLANEADA_ID) INTO ID_PARA_INSERIR FROM VIAGEM_PLANEADA;
 
-  -- Verificar se plano � v�lido (caso n�o seja lan�a a exce��o)
+  -- Verificar se plano é válido (caso não seja lança a exceção)
   IF DATA_INICIO_PERIODO >= DATA_FIM_PERIODO THEN
     RAISE PERIODO_INVALIDO;
   END IF;
 
-  -- Obter plano em quest�o
+  -- Obter plano em questão
   SELECT * INTO PLANO_EM_QUESTAO FROM PLANO P
   WHERE TRUNC(P.DATA_INICIO) = TRUNC(DATA_INICIO_PERIODO)
   AND TRUNC(P.DATA_FIM) = TRUNC(DATA_FIM_PERIODO);
@@ -248,11 +242,11 @@ BEGIN
   (SELECT * FROM VOO_REGULAR VR WHERE VR.PLANO_ID = PLANO_EM_QUESTAO.PLANO_ID )
   LOOP
   
-    -- Para cada voo regular percorrer as datas todas do plano para criar os voos necess�rios
+    -- Para cada voo regular percorrer as datas todas do plano para criar os voos necessários
     DATA_CONTADOR := DATA_INICIO_PERIODO;
     WHILE DATA_CONTADOR < DATA_FIM_PERIODO LOOP
       
-      -- Verificar se a data do contador corresponde ao dia da semana do voo regular em quest�o
+      -- Verificar se a data do contador corresponde ao dia da semana do voo regular em questão
       IF TO_CHAR(DATA_CONTADOR, 'D') = TO_CHAR(VOO_REGULAR_RECORD.DIA_DA_SEMANA) THEN
         
         -- Incrementar id a inserir

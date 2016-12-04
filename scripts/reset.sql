@@ -249,7 +249,6 @@ FOR EACH ROW
 DECLARE
   TOTAL_LUGARES_EXISTENTES NUMBER;
   TOTAL_LUGARES_POSSIVEIS NUMBER;
-  LUGARES_TODOS_CRIADO EXCEPTION;
 BEGIN
   SELECT COUNT(*) INTO TOTAL_LUGARES_EXISTENTES FROM LUGAR
   WHERE MARCA_MODELO = :NEW.MARCA_MODELO;
@@ -320,6 +319,108 @@ CHECK (FUNCAO = 'PILOTO' OR FUNCAO = 'CO-PILOTO');
 ALTER TABLE TRIPULANTE_CABINE ADD CONSTRAINT CK_R10_FUNCAO
 CHECK (FUNCAO = 'COMISSARIO' OR FUNCAO = 'COMISSARIO CHEFE');
 
+-- R11: Para cada voo doméstico e para europa, só pode existir 4 ou 6 tripulantes, respetivamente, 
+--      com categoria ‘COMISSARIO’ na tabela tripulante cabine.
+CREATE OR REPLACE TRIGGER TG_R11_NUM_COMISSARIOS
+BEFORE INSERT OR UPDATE ON TRIPULANTE_CABINE
+FOR EACH ROW
+DECLARE
+  TOTAL_COMISSARIOS_VOO INTEGER;
+  NUM_COM_PERMITIDOS INTEGER;
+BEGIN
+  
+  IF (:NEW.FUNCAO = 'COMISSARIO')
+  THEN
+    SELECT COUNT(*) 
+    INTO TOTAL_COMISSARIOS_VOO 
+    FROM TRIPULANTE_CABINE
+    WHERE VIAGEM_PLANEADA = :NEW.VIAGEM_PLANEADA
+      AND FUNCAO = 'COMISSARIO';
+    
+    SELECT CV.NUM_TRIP_CABINE 
+    INTO NUM_COM_PERMITIDOS 
+    FROM CATEGORIA_VOO CV, VOO V, VOO_REGULAR VR, VIAGEM_PLANEADA VP
+    WHERE VP.VOO_REGULAR = VR.VOO_REGULAR_ID
+      AND VR.VOO_ID = V.VOO_ID
+      AND V.CAT_VOO_ID = CV.CAT_VOO_ID
+      AND VP.VIAGEM_PLANEADA_ID = :NEW.VIAGEM_PLANEADA;
+    
+    IF (TOTAL_COMISSARIOS_VOO >= (NUM_COM_PERMITIDOS - 1)) 
+    THEN
+      RAISE_APPLICATION_ERROR( -20101, 'Já foram inseridos todos os comissários permitidos para esta viagem.');
+    END IF;
+  END IF;
+END;
+/
+
+-- R12: Para cada voo, só pode existir um ‘COMISSARIO CHEFE’ na tabela tripulante cabine. 
+CREATE OR REPLACE TRIGGER TG_R12_UM_COMISSARIO_CHEFE
+BEFORE INSERT OR UPDATE ON TRIPULANTE_CABINE
+FOR EACH ROW
+DECLARE
+  HAS_CHEFE INTEGER;
+BEGIN
+  
+  IF (:NEW.FUNCAO = 'COMISSARIO CHEFE')
+  THEN
+    SELECT COUNT(*) 
+    INTO HAS_CHEFE 
+    FROM TRIPULANTE_CABINE
+    WHERE VIAGEM_PLANEADA = :NEW.VIAGEM_PLANEADA
+      AND FUNCAO = 'COMISSARIO CHEFE';
+    
+    IF (HAS_CHEFE >= 1) 
+    THEN
+      RAISE_APPLICATION_ERROR( -20101, 'Já foi inserido o comissário chefe para esta viagem.');
+    END IF;
+  END IF;
+END;
+/
+
+-- R13: Para cada viagem só pode existir um ‘PILOTO’ e um ‘CO-PILOTO’ na tabela tripulante técnico.
+CREATE OR REPLACE TRIGGER TG_R13_1PILOTO_E_1CO_PILOTO
+BEFORE INSERT OR UPDATE ON TRIPULANTE_TECNICO
+FOR EACH ROW
+DECLARE
+  HAS_PILOTO INTEGER;
+BEGIN
+  
+  IF (:NEW.FUNCAO = 'CO-PILOTO')
+  THEN
+    SELECT COUNT(*) 
+    INTO HAS_PILOTO 
+    FROM TRIPULANTE_TECNICO
+    WHERE VIAGEM_PLANEADA = :NEW.VIAGEM_PLANEADA
+      AND FUNCAO = 'CO-PILOTO';
+    
+    IF (HAS_PILOTO >= 1) 
+    THEN
+      RAISE_APPLICATION_ERROR( -20101, 'Já foi inserido um co-piloto para esta viagem.');
+    END IF;
+  ELSE
+    SELECT COUNT(*) 
+    INTO HAS_PILOTO 
+    FROM TRIPULANTE_TECNICO
+    WHERE VIAGEM_PLANEADA = :NEW.VIAGEM_PLANEADA
+      AND FUNCAO = 'PILOTO';
+    
+    IF (HAS_PILOTO >= 1) 
+    THEN
+      RAISE_APPLICATION_ERROR( -20101, 'Já foi inserido um piloto para esta viagem.');
+    END IF;
+  END IF;
+END;
+/
+
+-- R14:	Um tripulante não pode estar alocado em mais do que 2 viagens no mesmo dia.
+-- *** (Trigger resolvido no exercicio 11)
+
+-- R15:	Para pilotar um determinado voo, o piloto tem de ter as horas de voo igual 
+--      ou superior às horas necessárias de um certo tipo de avião.
+-- *** (Trigger resolvido no exercicio 10)
+
+-- R16: A combinação do tipo de documento com o número do documento no passageiro, tem de ser única.
+ALTER TABLE PASSAGEIRO ADD CONSTRAINT U_R16_DOCUMENTO UNIQUE (TIPO_DOCUMENTO, NUM_DOCUMENTO);
 
 -- ### Inserir dados nas tabelas ###
 
