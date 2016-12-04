@@ -77,11 +77,11 @@ END;
 
 -- Procedures
 -- 8. 
--- Procedimento que atribua um aviaﾌバ e a tripulacﾌｧaﾌバ a cada voo regular definido para um periﾌ｛do. 
+-- Procedimento que atribua um aviaﾌバ e a tripulacﾌｧaﾌバ a cada voo regular definido para um periﾌ?odo. 
 -- Considere que a tripulacﾌｧaﾌバ e o aviaﾌバ saﾌバ sempre os mesmos para todas as viagens que se realizam 
--- nesse periﾌ｛do correspondentes ao mesmo voo_regular.
+-- nesse periﾌ?odo correspondentes ao mesmo voo_regular.
 -- PARAMS: PLANO_ID
-CREATE OR REPLACE PROCEDURE FC_ATRIBUIR_AVIAO_TRIPULACAO(PLANO_PARAM IN INTEGER)
+CREATE OR REPLACE PROCEDURE PC_ATRIBUIR_AVIAO_TRIPULACAO(PLANO_PARAM IN INTEGER)
 IS
   --EXCEPCOES PERSONALIZADAS
   TRIPULANTES_INSUF EXCEPTION;
@@ -204,7 +204,7 @@ EXCEPTION
     DBMS_OUTPUT.PUT_LINE('Muitos registos '||SYSDATE);
   WHEN OTHERS THEN
     DBMS_OUTPUT.PUT_LINE('Ocorreu um erro '||SYSDATE);
-END FC_ATRIBUIR_AVIAO_TRIPULACAO;
+END PC_ATRIBUIR_AVIAO_TRIPULACAO;
 /
 
 

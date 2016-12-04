@@ -136,12 +136,12 @@ END FC_NUM_VOOS_MIN;
 -- ##################### PROCEDIMENTOS #####################
 
 -- 14.
--- Procedimento que permita listar as rotas de voos possíveis entre um dado aeroporto origem e um aeroporto destino, 
+-- Procedimento que permita listar as rotas de voos possi�?veis entre um dado aeroporto origem e um aeroporto destino, 
 -- indicando para cada voo de ligação, a Ordem de sequência na viagem, os aeroportos envolvidos, 
--- o tipo de voo (Doméstico/Europa) e a distância . 
+-- o tipo de voo (Dome�?stico/Europa) e a distância . 
 -- Rota |  ordem  |  NumVoo |  de |  para |  tipo(D/E) |    distância 
 -- PARAMS: AEROPORTO_ORIGEM e AEROPORTO_DESTINO
-CREATE OR REPLACE PROCEDURE FC_LISTAR_ROTA(A_ORIGEM_PARAM IN VARCHAR, A_DESTINO_PARAM IN VARCHAR)
+CREATE OR REPLACE PROCEDURE PC_LISTAR_ROTA(A_ORIGEM_PARAM IN VARCHAR, A_DESTINO_PARAM IN VARCHAR)
 IS
   -- VARS
   TMP_ROTA_ORIGEM VARCHAR(3);
@@ -225,7 +225,7 @@ EXCEPTION
     DBMS_OUTPUT.PUT_LINE('Existe alguma rota malformada '||SYSDATE);
   WHEN OTHERS THEN
     DBMS_OUTPUT.PUT_LINE('Ocorreu um erro '||SYSDATE);
-END FC_FC_LISTAR_ROTA;
+END PC_LISTAR_ROTA;
 /
 
 
