@@ -225,7 +225,7 @@ EXCEPTION
     DBMS_OUTPUT.PUT_LINE('Existe alguma rota malformada '||SYSDATE);
   WHEN OTHERS THEN
     DBMS_OUTPUT.PUT_LINE('Ocorreu um erro '||SYSDATE);
-END FC_FC_LISTAR_ROTA;
+END FC_LISTAR_ROTA;
 /
 
 
